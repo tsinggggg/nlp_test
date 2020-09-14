@@ -1,0 +1,18 @@
+# Title of the document
+title: "NLP Model Test Report"
+
+rai_cache_path: "~/.cache/rai"
+
+checklist:
+  run: True
+  MFT:
+    run: True
+    customized_mfts:
+    num_sentences: 10
+#  INV:
+#    run: True
+#  DIR:
+#    run: True
+
+text_attack:
+  embedding: "paragramcf"

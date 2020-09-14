@@ -1,0 +1,11 @@
+# config
+confuse>=1.0.0
+
+# nlp stuff
+checklist>=0.0.9
+transformers
+torch
+
+# common
+numpy
+jinja2

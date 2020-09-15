@@ -1,4 +1,6 @@
 import functools
+import collections
+import pandas as pd
 from checklist.test_types import MFT, INV, DIR
 from checklist.test_suite import TestSuite
 from checklist.editor import Editor
@@ -97,3 +99,22 @@ def run_cl_test(testsuite, pipeline):
                                    pipeline=pipeline)
     testsuite.run(pred_f)
     return testsuite
+
+
+def get_summary_from_test_suite(testsuite):
+    ret = pd.DataFrame()
+    vals = collections.defaultdict(lambda: 100, {'MFT': 0, 'INV': 1, 'DIR': 2})
+    capability_order = ['Vocabulary', 'Taxonomy', 'Robustness', 'NER', 'Fairness', 'Temporal', 'Negation', 'Coref',
+                        'SRL', 'Logic']
+    cap_order = lambda x: capability_order.index(x) if x in capability_order else 100
+    caps = sorted(set([x['capability'] for x in testsuite.info.values()]), key=cap_order)
+    for capability in caps:
+        tests = [x for x in testsuite.tests if testsuite.info[x]['capability'] == capability]
+        for n in tests:
+            stats = testsuite.tests[n].get_stats()
+            stats.update({'capability': capability}),
+            stats.update({'test_name': n})
+            stats.update({'type': testsuite.info[n]['type']})
+
+            ret = ret.append(stats, ignore_index=True)
+    return ret

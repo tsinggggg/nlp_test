@@ -194,6 +194,10 @@ def fmt_numeric(value: float, precision=3) -> str:
     return "{{:.{precision}g}}".format(precision=precision).format(value)
 
 
+def fmt_pct_numeric_pair(pair) -> str:
+    return fmt_percent(pair[0]) + f"({fmt_numeric(pair[1])})"
+
+
 def fmt_number(value: int) -> str:
     """Format any numeric value.
     Args:
@@ -258,4 +262,6 @@ def get_fmt_mapping() -> Dict[str, Callable]:
         "fmt_array": fmt_array,
         "fmt": fmt,
         "raw": lambda x: x,
+
+        "fmt_pct_numeric_pair": fmt_pct_numeric_pair,
     }

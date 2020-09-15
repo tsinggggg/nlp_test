@@ -5,13 +5,19 @@ from ..core import HTML, Root, Container, Table
 def get_report_overview(results):
     ret = []
     if "checklist" in results:
+        from ...nlptest.testsuite.cl_test.cl_testsuite import get_summary_from_test_suite
+        cl_summary = get_summary_from_test_suite(results["checklist"])
+        cl_summary = cl_summary.pivot('capability', 'type', ['testcases', 'fails'])
         test_info_cl = Table(
             [
                 {
-                    "name": "Number of tests",
-                    "value": [2, 4, 6],
-                    "fmt": "fmt_number",
-                },
+                    "name": cap,
+                    "value": [(row['fails', t] / row['testcases', t], row['testcases', t])
+                              if ('testcases', t) in row.index else (0, 0)
+                              for t in ['MFT', 'INV', 'DIR']],
+                    "fmt": "fmt_pct_numeric_pair",
+                }
+                for cap, row in cl_summary.iterrows()
             ],
             name="CL Test Summary",
             header=['capability', 'mft', 'inv', 'dir']

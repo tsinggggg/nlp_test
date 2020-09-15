@@ -14,5 +14,7 @@ checklist:
 #  DIR:
 #    run: True
 
-text_attack:
+textattack:
+  run: True
+  recipe: "TextFoolerJin2019"
   embedding: "paragramcf"

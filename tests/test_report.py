@@ -19,5 +19,6 @@ class TestsTest(TestCase):
         report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer)
         result = report.test_result
         result['checklist'].summary()
+        result['textattack'].log_summary()
         with open('./out/report_1.html', 'w') as fh:
             fh.write(report.html)

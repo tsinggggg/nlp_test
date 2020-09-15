@@ -1,5 +1,7 @@
 from typing import Union
 from pathlib import Path
+import prompt_toolkit # this is a hack to solve the name conflict caused by wandb.vendor.prompt_toolkit
+import os
 from .config import config
 from ..utils.model_wrapper import model_wrapper
 
@@ -21,6 +23,8 @@ class NLPReport:
 
         config.set_kwargs(kwargs)
 
+        os.environ['TA_CACHE_DIR'] = os.path.expanduser(config['rai_cache_path'].get(str))
+
         self.data = dataset
         self.model = model
         self.tokenizer = tokenizer
@@ -40,6 +44,12 @@ class NLPReport:
             if config['checklist']['run'].get(bool):
                 from .testsuite.cl_test.cl_testsuite import create_cl_testsuite
                 self._test_suites['checklist'] = create_cl_testsuite(self.data)
+            if config['textattack']['run'].get(bool):
+                from .testsuite.ta.ta_testsuite import create_ta_recipe
+                self._test_suites['textattack'] = create_ta_recipe(self.model,
+                                                                   self.tokenizer,
+                                                                   config['textattack']['recipe'].get(str)
+                                                                   )
         return self._test_suites
 
     @property
@@ -51,13 +61,18 @@ class NLPReport:
                 testsuite = self.test_suite['checklist']
                 self._test_results['checklist'] = run_cl_test(testsuite=testsuite,
                                                               pipeline=self.pipeline)
+            if config['textattack']['run'].get(bool):
+                from .testsuite.ta.ta_testsuite import run_ta_test
+                attack = self.test_suite['textattack']
+                self._test_results['textattack'] = run_ta_test(attack, self.data)
+
         return self._test_results
 
     @property
     def report(self):
         if self._report is None:
             from ..view.structure.report import get_report_structure
-            self._report = get_report_structure()
+            self._report = get_report_structure(self.test_result)
         return self._report
 
     @property

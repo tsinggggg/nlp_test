@@ -183,7 +183,7 @@ def fmt_timespan(num_seconds, detailed=False, max_units=3):
             return concatenate(result)
 
 
-def fmt_numeric(value: float, precision=10) -> str:
+def fmt_numeric(value: float, precision=3) -> str:
     """Format any numeric value.
     Args:
         value: The numeric value to format.

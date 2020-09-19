@@ -18,20 +18,21 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         HTMLRoot,
         HTMLTable,
         HTMLContainer,
-
+        HTMLSentencePair
     )
     from ..core import (
         HTML,
         Container,
         Root,
         Table,
-
+        SentencePair
     )
     return {
         HTML: HTMLHTML,
         Root: HTMLRoot,
         Container: HTMLContainer,
-        Table: HTMLTable
+        Table: HTMLTable,
+        SentencePair: HTMLSentencePair
     }
 
 

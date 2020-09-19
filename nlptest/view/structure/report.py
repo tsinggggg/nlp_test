@@ -1,5 +1,6 @@
 from ..abstract.renderable import Renderable
-from ..core import HTML, Root, Container, Table
+from ..core import HTML, Root, Container, Table, SentencePair
+from textattack.loggers import attack_log_manager
 
 
 def get_report_overview(results):
@@ -55,6 +56,12 @@ def get_report_overview(results):
     return ret
 
 
+def get_ta_detail(logger: attack_log_manager):
+    results = logger.results
+    ret = [SentencePair(string=x.__str__('file')) for x in results]
+    return ret
+
+
 def get_report_structure(results
                          ) -> Renderable:
     section_items = []
@@ -67,6 +74,16 @@ def get_report_structure(results
             anchor_id="overview",
         )
     )
+    # each sentence/result of text attack
+    if "textattack" in results:
+        section_items.append(
+            Container(
+                get_ta_detail(results["textattack"]),
+                sequence_type="list",
+                name="TA result",
+                anchor_id="ta_result",
+            )
+        )
     sections = Container(section_items, name="Root", sequence_type="sections")
     footer = HTML(
         content='NLP tests utilizing <a href="https://github.com/marcotcr/checklist">checklist</a>.'

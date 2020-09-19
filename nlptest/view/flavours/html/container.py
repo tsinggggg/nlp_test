@@ -4,15 +4,15 @@ from ..html import templates
 
 class HTMLContainer(Container):
     def render(self):
-        # if self.sequence_type in ["list", "accordion"]:
-        #     return templates.template("sequence/list.html").render(
-        #         anchor_id=self.content["anchor_id"], items=self.content["items"]
-        #     )
+        if self.sequence_type in ["list"]:
+            return templates.template("sequence/list.html").render(
+                anchor_id=self.content["anchor_id"], items=self.content["items"]
+            )
         # elif self.sequence_type == "named_list":
         #     return templates.template("sequence/named_list.html").render(
         #         anchor_id=self.content["anchor_id"], items=self.content["items"]
         #     )
-        if self.sequence_type == "tabs":
+        elif self.sequence_type == "tabs":
             return templates.template("sequence/tabs.html").render(
                 tabs=self.content["items"],
                 anchor_id=self.content["anchor_id"],

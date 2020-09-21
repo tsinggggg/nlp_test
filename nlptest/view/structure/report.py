@@ -86,6 +86,6 @@ def get_report_structure(results
         )
     sections = Container(section_items, name="Root", sequence_type="sections")
     footer = HTML(
-        content='NLP tests utilizing <a href="https://github.com/marcotcr/checklist">checklist</a>.'
+        content='NLP tests utilizing <a href="https://github.com/marcotcr/checklist">checklist</a>, <a href="https://github.com/QData/TextAttack">textattack</a>.'
     )
     return Root("Root", sections, footer)

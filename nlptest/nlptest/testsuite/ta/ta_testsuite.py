@@ -49,6 +49,9 @@ def get_result_from_logger(logger):
     skipped_attacks = 0
     successful_attacks = 0
     max_words_changed = 0
+    attacks_with_additional_grammar_errors = 0
+    from textattack.constraints.grammaticality.language_tool import LanguageTool
+    language_tool = LanguageTool()
     from textattack.attack_results import FailedAttackResult, SkippedAttackResult
     for i, result in enumerate(logger.results):
         all_num_words[i] = len(result.original_result.attacked_text.words)
@@ -78,6 +81,10 @@ def get_result_from_logger(logger):
         else:
             perturbed_word_percentage = 0
         perturbed_word_percentages[i] = perturbed_word_percentage
+        if not language_tool._check_constraint(result.perturbed_result.attacked_text,
+                                               result.original_result.attacked_text):
+            attacks_with_additional_grammar_errors += 1
+
 
     # Original classifier success rate on these samples.
     original_accuracy = (total_attacks - skipped_attacks) * 100.0 / (total_attacks)
@@ -105,6 +112,8 @@ def get_result_from_logger(logger):
     average_num_words = all_num_words.mean()
     # average_num_words = str(round(average_num_words, 2))
 
+    additional_grammar_errors_pctg = attacks_with_additional_grammar_errors * 100.0 / (total_attacks)
+
     summary_table_rows = {
         "Number of successful attacks": successful_attacks,
         "Number of failed attacks": failed_attacks,
@@ -125,6 +134,7 @@ def get_result_from_logger(logger):
     )
     avg_num_queries = num_queries.mean()
     # avg_num_queries = str(round(avg_num_queries, 2))
-    summary_table_rows.update({"Avg num queries:": avg_num_queries})
+    summary_table_rows.update({"Avg num queries:": avg_num_queries,
+                               "(Additional) grammar error rate": additional_grammar_errors_pctg,})
 
     return summary_table_rows

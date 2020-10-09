@@ -1,0 +1,24 @@
+{% if name %}
+    <p class="h4">{{ name }}</p>
+{% endif %}
+<table class="table table-condensed stats">
+    {% if header %}
+        <thead>
+            {% for h in header %}
+                <th>
+                    {{ h }}
+                </th>
+            {% endfor %}
+        </thead>
+    {% endif %}
+    <tbody>
+        {% for row in rows %}
+        {{ row.render() }}
+        {% endfor %}
+    </tbody>
+</table>
+{% if caption %}
+    <div class="caption text-center text-muted">
+        {{ caption }}
+    </div>
+{% endif %}

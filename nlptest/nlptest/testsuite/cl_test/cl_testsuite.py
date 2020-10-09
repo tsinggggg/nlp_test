@@ -115,6 +115,20 @@ def get_summary_from_test_suite(testsuite):
             stats.update({'capability': capability}),
             stats.update({'test_name': n})
             stats.update({'type': testsuite.info[n]['type']})
-
             ret = ret.append(stats, ignore_index=True)
-    return ret
+    ret = ret.pivot('capability', 'type', ['testcases', 'fails'])
+    ret_dict = collections.OrderedDict()
+    for cap, row in ret.iterrows():
+        ret_dict[cap] = collections.OrderedDict()
+        for t in ['MFT', 'INV', 'DIR']:
+            if ('testcases', t) in row.index:
+                ret_dict[cap][t] = {'fail_rate': row['fails', t] / row['testcases', t],
+                                    'cases': row['testcases', t],
+                                    'fail': row['fails', t]
+                                    }
+            else:
+                ret_dict[cap][t] = {'fail_rate': 0,
+                                    'cases': 0,
+                                    'fail': 0
+                                    }
+    return ret_dict

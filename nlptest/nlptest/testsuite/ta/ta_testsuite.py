@@ -135,6 +135,7 @@ def get_result_from_logger(logger):
     avg_num_queries = num_queries.mean()
     # avg_num_queries = str(round(avg_num_queries, 2))
     summary_table_rows.update({"Avg num queries:": avg_num_queries,
-                               "(Additional) grammar error rate": additional_grammar_errors_pctg,})
+                               "(Additional) grammar error rate": additional_grammar_errors_pctg,
+                               })
 
     return summary_table_rows

@@ -1,0 +1,5 @@
+{% if nav == True %}
+body {
+  padding-top: 80px;
+}
+{% endif %}

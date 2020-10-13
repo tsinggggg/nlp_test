@@ -1,7 +1,7 @@
 {% if name %}
     <p class="h4">{{ name }}</p>
 {% endif %}
-<table class="table table-condensed stats">
+<table class="table table-condensed stats" id="{{ anchor_id }}">
     {% if header %}
         <thead>
             {% for h in header %}
@@ -13,8 +13,20 @@
     {% endif %}
     <tbody>
         {% for row in rows %}
-        {{ row.render() }}
+            <tr data-toggle="collapse" data-target="#{{ anchor_id }}-{{loop.index}}" class="accordion-toggle">
+                {{ row.render() }}
+            </tr>
+            <tr >
+            <td>
+                <div class="accordian-body collapse" id="{{ anchor_id }}-{{loop.index}}">
+                    {% for toggle_content in row.content['toggle_content'] %}
+                        {{ toggle_content.render() }}
+                    {% endfor %}
+                </div>
+            </td>
+            </tr>
         {% endfor %}
+
     </tbody>
 </table>
 {% if caption %}

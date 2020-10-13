@@ -1,8 +1,6 @@
-<tr{% if 'alert' in row and row['alert'] %} class="alert"{% endif %}>
-            <th>{{ row_index }}</th>
-            {% for item in content %}
-            {% for v in item['value'] %}
-                <td>{{ v | dynamic_filter(item['fmt']) }}</td>
-            {% endfor %}
-            {% endfor %}
-</tr>
+<th>{{ row_index }}</th>
+{% for item in content %}
+{% for v in item['value'] %}
+    <td>{{ v | dynamic_filter(item['fmt']) }}</td>
+{% endfor %}
+{% endfor %}

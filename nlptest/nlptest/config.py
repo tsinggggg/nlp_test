@@ -85,6 +85,9 @@ def _parse_perturb(conf):
     else:
         ret = dict()
         ret['change'] = conf['change'].get(str)
-        ret['phrases'] = conf['phrases'].get(list)
+        try:
+            ret['phrases'] = conf['phrases'].get(list)
+        except:
+            ret['phrases'] = []
         return ret
 

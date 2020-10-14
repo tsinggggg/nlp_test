@@ -56,11 +56,10 @@ def create_MFT(dataset=None, templates=None, perturb=None, name=None, capability
                            )
     elif perturb:
         from checklist.perturb import Perturb
-        func = _perturb_functions(perturb['change'])
+        func = _perturb_functions(perturb['change'], perturb['phrases'])
         features, targets = [x[0] for x in dataset], [x[1] for x in dataset]
         perturbed_data = Perturb.perturb(features,
-                                         functools.partial(func,
-                                                           phrases=perturb['phrases'])
+                                         func
                                          )
         # _flattened_data = [item for sublist in perturbed_data['data'] for item in sublist]
         # num_perturb = [len(x) for x in perturbed_data['data']]
@@ -100,12 +99,11 @@ def create_INV(dataset=None, templates=None, perturb=None, name=None, capability
     """
     if perturb is not None:
         from checklist.perturb import Perturb
-        func = _perturb_functions(perturb['change'])
+        func = _perturb_functions(perturb['change'], perturb['phrases'])
 
         features, targets = [x[0] for x in dataset], [x[1] for x in dataset]
         perturbed_data = Perturb.perturb(features,
-                                         functools.partial(func,
-                                                           phrases=perturb['phrases'])
+                                         func
                                          )
         test = _create_INV(data=perturbed_data['data'],
                            name=name, capability=capability, description=description
@@ -184,7 +182,7 @@ def get_summary_from_test_suite(testsuite):
             stats.update({'test_name': n})
             stats.update({'type': testsuite.info[n]['type']})
             ret = ret.append(stats, ignore_index=True)
-    ret = ret.pivot('capability', 'type', ['testcases', 'fails'])
+    ret = ret.pivot_table(index='capability', columns='type', values=['testcases', 'fails'])
     ret_dict = collections.OrderedDict()
     for cap, row in ret.iterrows():
         ret_dict[cap] = collections.OrderedDict()
@@ -203,14 +201,17 @@ def get_summary_from_test_suite(testsuite):
     return ret_dict
 
 
-def _perturb_functions(change_to_make):
+def _perturb_functions(change_to_make, phrases):
     if change_to_make == "append_to_end":
-        def append_to_end(x, phrases):
+        def append_to_end(x):
             return ["%s %s"%(x, p) for p in phrases]
         return append_to_end
     elif change_to_make == "append_to_start":
-        def append_to_start(x, phrases):
+        def append_to_start(x):
             return ["%s %s"%(x, p) for p in phrases]
         return append_to_start
+    elif change_to_make == "adding_typos":
+        from checklist.perturb import Perturb
+        return Perturb.add_typos
     else:
         raise ValueError("not supported perturb")

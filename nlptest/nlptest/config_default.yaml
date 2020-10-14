@@ -37,6 +37,16 @@ checklist:
           - " Best regards,"
           - " thank u."
 
+    adding typos:
+      type: "INV"
+      capability: "Robustness"
+      description: "adding_typos"
+      num_sentences: 10
+      perturb:
+        change: "adding_typos"
+        phrases:
+
+
   customized_test:
 
 textattack:

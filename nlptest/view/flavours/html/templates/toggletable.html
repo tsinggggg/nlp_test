@@ -16,7 +16,7 @@
             <tr data-toggle="collapse" data-target="#{{ anchor_id }}-{{loop.index}}" class="accordion-toggle">
                 {{ row.render() }}
             </tr>
-            <tr >
+
             <td>
                 <div class="accordian-body collapse" id="{{ anchor_id }}-{{loop.index}}">
                     {% for toggle_content in row.content['toggle_content'] %}
@@ -24,7 +24,7 @@
                     {% endfor %}
                 </div>
             </td>
-            </tr>
+
         {% endfor %}
 
     </tbody>

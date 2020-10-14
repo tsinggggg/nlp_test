@@ -24,6 +24,20 @@ def _create_MFT(data, labels, name=None, capability=None, description=None):
     return test
 
 
+def _create_INV(data, name=None, capability=None, description=None):
+    """
+
+    :param data: list of inputs(strings or ...)
+    :param name:
+    :param capability:
+    :param description:
+    :return:
+    """
+    test = INV(data=data,
+               name=name, capability=capability, description=description)
+    return test
+
+
 def create_MFT(dataset=None, templates=None, perturb=None, name=None, capability=None, description=None, **kwargs):
     """
 
@@ -48,26 +62,64 @@ def create_MFT(dataset=None, templates=None, perturb=None, name=None, capability
                                          functools.partial(func,
                                                            phrases=perturb['phrases'])
                                          )
-        _flattened_data = [item for sublist in perturbed_data['data'] for item in sublist]
-        num_perturb = [len(x) for x in perturbed_data['data']]
-        _labels = []
-        for n, y in zip(num_perturb, targets):
-            _labels.extend([y] * n)
-        test = _create_MFT(data=_flattened_data,
-                           labels=_labels,
+        # _flattened_data = [item for sublist in perturbed_data['data'] for item in sublist]
+        # num_perturb = [len(x) for x in perturbed_data['data']]
+        # _labels = []
+        # for n, y in zip(num_perturb, targets):
+        #     _labels.extend([y] * n)
+        test = _create_MFT(data=perturbed_data['data'],
+                           labels=targets,
                            name=name, capability=capability, description=description
                            )
 
-    elif templates:
-        editor, ret = Editor(), None
-        for t in templates:
-            if ret is None:
-                ret = editor.template(**t)
-            else:
-                ret += editor.template(**t)
-        test = _create_MFT(**ret,
+    # elif templates:
+    #     editor, ret = Editor(), None
+    #     for t in templates:
+    #         if ret is None:
+    #             ret = editor.template(**t)
+    #         else:
+    #             ret += editor.template(**t)
+    #     test = _create_MFT(**ret,
+    #                        name=name, capability=capability, description=description
+    #                        )
+    else:
+        raise ValueError('please provide at least one of dataset or templates for MFT')
+
+    return test
+
+
+def create_INV(dataset=None, templates=None, perturb=None, name=None, capability=None, description=None, **kwargs):
+    """
+
+    :param dataset: list of lists of input, label
+    :param templates:
+    :param name:
+    :param capability:
+    :param description:
+    :return:
+    """
+    if perturb is not None:
+        from checklist.perturb import Perturb
+        func = _perturb_functions(perturb['change'])
+
+        features, targets = [x[0] for x in dataset], [x[1] for x in dataset]
+        perturbed_data = Perturb.perturb(features,
+                                         functools.partial(func,
+                                                           phrases=perturb['phrases'])
+                                         )
+        test = _create_INV(data=perturbed_data['data'],
                            name=name, capability=capability, description=description
                            )
+    # elif templates:
+    #     editor, ret = Editor(), None
+    #     for t in templates:
+    #         if ret is None:
+    #             ret = editor.template(**t)
+    #         else:
+    #             ret += editor.template(**t)
+    #     test = _create_MFT(**ret,
+    #                        name=name, capability=capability, description=description
+    #                        )
     else:
         raise ValueError('please provide at least one of dataset or templates for MFT')
 
@@ -91,7 +143,17 @@ def create_cl_testsuite(dataset):
                              perturb=_parse_perturb(test_config['perturb'])
                              )
             suite.add(mft)
-            test_count += 1
+        elif test_config['type'].get(str) == "INV":
+            inv = create_INV(dataset=dataset[:test_config['num_sentences'].get(int)],
+                             name=test_name,
+                             capability=test_config['capability'].get(str),
+                             description=test_config['description'].get(str),
+                             perturb=_parse_perturb(test_config['perturb'])
+                             )
+            suite.add(inv)
+        else:
+            continue
+        test_count += 1
 
     if test_count == 0:
         raise ValueError("No tests provided")
@@ -127,7 +189,8 @@ def get_summary_from_test_suite(testsuite):
     for cap, row in ret.iterrows():
         ret_dict[cap] = collections.OrderedDict()
         for t in ['MFT', 'INV', 'DIR']:
-            if ('testcases', t) in row.index:
+            if ('testcases', t) in row.index and \
+                    (not pd.isna(row[('testcases', t)])):
                 ret_dict[cap][t] = {'fail_rate': row['fails', t] / row['testcases', t],
                                     'cases': row['testcases', t],
                                     'fail': row['fails', t]

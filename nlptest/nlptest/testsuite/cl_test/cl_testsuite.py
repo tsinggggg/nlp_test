@@ -182,7 +182,7 @@ def get_summary_from_test_suite(testsuite):
             stats.update({'test_name': n})
             stats.update({'type': testsuite.info[n]['type']})
             ret = ret.append(stats, ignore_index=True)
-    ret = ret.pivot_table(index='capability', columns='type', values=['testcases', 'fails'])
+    ret = ret.pivot_table(index='capability', columns='type', values=['testcases', 'fails'], aggfunc='sum')
     ret_dict = collections.OrderedDict()
     for cap, row in ret.iterrows():
         ret_dict[cap] = collections.OrderedDict()

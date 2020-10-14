@@ -77,3 +77,14 @@ class Config(object):
 
 
 config = Config()
+
+
+def _parse_perturb(conf):
+    if conf.get() is None:
+        return None
+    else:
+        ret = dict()
+        ret['change'] = conf['change'].get(str)
+        ret['phrases'] = conf['phrases'].get(list)
+        return ret
+

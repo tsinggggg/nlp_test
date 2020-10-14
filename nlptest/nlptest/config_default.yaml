@@ -5,14 +5,39 @@ rai_cache_path: "~/.cache/rai"
 
 checklist:
   run: True
-  MFT:
-    run: True
-    customized_mfts:
-    num_sentences: 10
-#  INV:
-#    run: True
-#  DIR:
-#    run: True
+  tests:
+    in sample correctness:
+      type: "MFT"
+      capability: "Correctness"
+      description: "testing samples in train/test data"
+      num_sentences: 10
+      perturb:
+
+    adding thank-you MFT:
+      type: "MFT"
+      capability: "Robustness"
+      description: "adding thank-yous to end of sentence"
+      num_sentences: 10
+      perturb:
+        change: "append_to_end"
+        phrases:
+          - " Thank you."
+          - " Best regards,"
+          - " thank u."
+
+    adding thank-you:
+      type: "INV"
+      capability: "Robustness"
+      description: "adding thank-yous to end of sentence"
+      num_sentences: 10
+      perturb:
+        change: "append_to_end"
+        phrases:
+          - " Thank you."
+          - " Best regards,"
+          - " thank u."
+
+  customized_test:
 
 textattack:
   run: True

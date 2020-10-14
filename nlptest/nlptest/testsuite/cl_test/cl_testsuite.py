@@ -6,7 +6,7 @@ from checklist.test_suite import TestSuite
 from checklist.editor import Editor
 from transformers import TextClassificationPipeline
 from .predict_functions import predict_function_for_huggingface_pipeline
-from ...config import config
+from ...config import config, _parse_perturb
 
 
 def _create_MFT(data, labels, name=None, capability=None, description=None):
@@ -24,7 +24,7 @@ def _create_MFT(data, labels, name=None, capability=None, description=None):
     return test
 
 
-def create_MFT(dataset=None, templates=None, name=None, capability=None, description=None):
+def create_MFT(dataset=None, templates=None, perturb=None, name=None, capability=None, description=None, **kwargs):
     """
 
     :param dataset: list of lists of input, label
@@ -34,18 +34,30 @@ def create_MFT(dataset=None, templates=None, name=None, capability=None, descrip
     :param description:
     :return:
     """
-    if dataset:
-
-        # def get_iterator_for_data_at_index(data, ind):
-        #     for i in data:
-        #         # assuming this way of indexing works...
-        #         # checklist does not accept genertor, will call len method
-        #         yield i[ind]
+    if templates is None and perturb is None:
 
         test = _create_MFT(data=[x[0] for x in dataset],
                            labels=[x[1] for x in dataset],
                            name=name, capability=capability, description=description
                            )
+    elif perturb:
+        from checklist.perturb import Perturb
+        func = _perturb_functions(perturb['change'])
+        features, targets = [x[0] for x in dataset], [x[1] for x in dataset]
+        perturbed_data = Perturb.perturb(features,
+                                         functools.partial(func,
+                                                           phrases=perturb['phrases'])
+                                         )
+        _flattened_data = [item for sublist in perturbed_data['data'] for item in sublist]
+        num_perturb = [len(x) for x in perturbed_data['data']]
+        _labels = []
+        for n, y in zip(num_perturb, targets):
+            _labels.extend([y] * n)
+        test = _create_MFT(data=_flattened_data,
+                           labels=_labels,
+                           name=name, capability=capability, description=description
+                           )
+
     elif templates:
         editor, ret = Editor(), None
         for t in templates:
@@ -70,22 +82,16 @@ def create_cl_testsuite(dataset):
     """
     suite = TestSuite()
     test_count = 0
-    if config['checklist']['MFT']['run'].get(bool):
-        # customized mft
-        if config['checklist']['MFT']['customized_mfts']:
-            for t in config['checklist']['MFT']['customized_mfts']:
-                mft = create_MFT(**t)
-                suite.add(mft)
-                test_count += 1
-        # default mft
-        mft = create_MFT(dataset=dataset[:config['checklist']['MFT']['num_sentences'].get(int)],
-                         templates=None,
-                         name='In Sample MFT',
-                         capability='Correctness',
-                         description='testing samples in train/test data'
-                         )
-        suite.add(mft)
-        test_count += 1
+    for test_name, test_config in config['checklist']['tests'].items():
+        if test_config['type'].get(str) == "MFT":
+            mft = create_MFT(dataset=dataset[:test_config['num_sentences'].get(int)],
+                             name=test_name,
+                             capability=test_config['capability'].get(str),
+                             description=test_config['description'].get(str),
+                             perturb=_parse_perturb(test_config['perturb'])
+                             )
+            suite.add(mft)
+            test_count += 1
 
     if test_count == 0:
         raise ValueError("No tests provided")
@@ -132,3 +138,16 @@ def get_summary_from_test_suite(testsuite):
                                     'fail': 0
                                     }
     return ret_dict
+
+
+def _perturb_functions(change_to_make):
+    if change_to_make == "append_to_end":
+        def append_to_end(x, phrases):
+            return ["%s %s"%(x, p) for p in phrases]
+        return append_to_end
+    elif change_to_make == "append_to_start":
+        def append_to_start(x, phrases):
+            return ["%s %s"%(x, p) for p in phrases]
+        return append_to_start
+    else:
+        raise ValueError("not supported perturb")

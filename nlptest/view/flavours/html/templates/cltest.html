@@ -39,3 +39,31 @@
         </tbody>
     </table>
 </div>
+
+<div class="col-sm-6">
+    <p class="h4">
+        Examples
+    </p>
+    <ul>
+        {% for example in examples %}
+        {% for e in example['examples'] %}
+        <li>
+            {% if e["succeed"] == 1%}
+             &#9745
+            {% else %}
+             &#9746
+            {% endif %}
+            |<b>Expected: {{e["label"]}}</b>
+            |<b>Pred: {{e["new"]["pred"]}}({{e["new"]["conf"] | dynamic_filter("fmt_percent")}})</b>
+            <br>
+            {% if e["old"]%}
+            <p>{{e["old"]["text"]}}</p>
+            <b>&#x2193</b>
+            {% endif %}
+            <p>{{e["new"]["text"]}}</p>
+
+        </li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>

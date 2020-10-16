@@ -100,7 +100,9 @@ def get_cl_detail(testsuite):
                                                  result={'fail':stats['fails'],
                                                          'testcases': stats['testcases'],
                                                          'rate': stats['fails'] / stats['testcases'],
-                                                         })],
+                                                         },
+                                                 examples=testsuite.tests[test].form_testcases()
+                                                 )],
                           )
                 )
             # _toggle_content.append(Table(

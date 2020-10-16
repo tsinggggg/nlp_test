@@ -96,7 +96,7 @@
         <tr>
             <th>Robustness</th>
                 <td>0.0%(2)</td>
-                <td>0.0%(4)</td>
+                <td>25.0%(4)</td>
                 <td>0.0%(0)</td>
         </tr>
     </tbody>
@@ -253,7 +253,7 @@ this is a [[wicked]] movie
             <td>
                 [<b>MFT</b>] on [<b>Correctness</b>]
                 <br>
-                
+                in sample correctness
             </td>
         </tr>
         <tr>
@@ -281,6 +281,30 @@ this is a [[wicked]] movie
         </tbody>
     </table>
 </div>
+
+<div class="col-sm-6">
+    <p class="h4">
+        Examples
+    </p>
+    <ul>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a good movie</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 0</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            <br>
+            <p>this is a bad movie</p>
+
+        </li>
+    </ul>
+</div>
 <!--                </div>-->
             </td>
 
@@ -296,7 +320,7 @@ this is a [[wicked]] movie
             <tr data-toggle="collapse" data-target="#cl_result_table-2" class="accordion-toggle">
                 <th>Robustness</th>
     <td>0.0%(2)</td>
-    <td>0.0%(4)</td>
+    <td>25.0%(4)</td>
     <td>0.0%(0)</td>
 
             </tr>
@@ -336,7 +360,7 @@ this is a [[wicked]] movie
             <td>
                 [<b>MFT</b>] on [<b>Robustness</b>]
                 <br>
-                
+                adding thank-you MFT
             </td>
         </tr>
         <tr>
@@ -363,6 +387,62 @@ this is a [[wicked]] movie
         </tr>
         </tbody>
     </table>
+</div>
+
+<div class="col-sm-6">
+    <p class="h4">
+        Examples
+    </p>
+    <ul>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a good movie</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a good movie  Thank you.</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a good movie  Best regards,</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 0</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            <br>
+            <p>this is a bad movie</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 0</b>
+            |<b>Pred: 0(99.8%)</b>
+            <br>
+            <p>this is a bad movie  Thank you.</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 0</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            <br>
+            <p>this is a bad movie  Best regards,</p>
+
+        </li>
+    </ul>
 </div>
 <!--                </div>-->
             </td>
@@ -405,7 +485,7 @@ this is a [[wicked]] movie
             <td>
                 [<b>INV</b>] on [<b>Robustness</b>]
                 <br>
-                
+                adding thank-you
             </td>
         </tr>
         <tr>
@@ -433,12 +513,60 @@ this is a [[wicked]] movie
         </tbody>
     </table>
 </div>
+
+<div class="col-sm-6">
+    <p class="h4">
+        Examples
+    </p>
+    <ul>
+        <li>
+             &#9745
+            |<b>Expected: None</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a good movie</p>
+            <b>&#x2193</b>
+            <p>this is a good movie  Thank you.</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: None</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a good movie</p>
+            <b>&#x2193</b>
+            <p>this is a good movie  Best regards,</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: None</b>
+            |<b>Pred: 0(99.8%)</b>
+            <br>
+            <p>this is a bad movie</p>
+            <b>&#x2193</b>
+            <p>this is a bad movie  Thank you.</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: None</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            <br>
+            <p>this is a bad movie</p>
+            <b>&#x2193</b>
+            <p>this is a bad movie  Best regards,</p>
+
+        </li>
+    </ul>
+</div>
 <!--                </div>-->
             </td>
 
             <tr data-toggle="collapse" data-target="#Robustness-INV-2" class="accordion-toggle">
                 <th>adding typos</th>
-    <td>0.0%(2)</td>
+    <td>50.0%(2)</td>
 
             </tr>
 
@@ -457,7 +585,7 @@ this is a [[wicked]] movie
             <td>
                 [<b>INV</b>] on [<b>Robustness</b>]
                 <br>
-                
+                adding typos
             </td>
         </tr>
         <tr>
@@ -478,12 +606,40 @@ this is a [[wicked]] movie
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 2 = 0.0%
+                1 / 2 = 50.0%
             </td>
 
         </tr>
         </tbody>
     </table>
+</div>
+
+<div class="col-sm-6">
+    <p class="h4">
+        Examples
+    </p>
+    <ul>
+        <li>
+             &#9746
+            |<b>Expected: None</b>
+            |<b>Pred: 0(99.1%)</b>
+            <br>
+            <p>this is a good movie</p>
+            <b>&#x2193</b>
+            <p>this is a goo dmovie</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: None</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            <br>
+            <p>this is a bad movie</p>
+            <b>&#x2193</b>
+            <p>htis is a bad movie</p>
+
+        </li>
+    </ul>
 </div>
 <!--                </div>-->
             </td>

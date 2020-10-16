@@ -1,0 +1,41 @@
+<div class="col-sm-6">
+    <table class="table table-condensed stats">
+        <p class="h4">
+        Test Summary
+        </p>
+        <tbody>
+        <tr>
+            <th>
+                Test
+            </th>
+            <td>
+                [<b>{{test_type}}</b>] on [<b>{{capability}}</b>]
+                <br>
+                {{test_name}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Desc.
+            </th>
+            <td>
+                {{description}}
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                Result.
+            </th>
+            <td>
+                <b>
+                <span style="color: #7A9DEA">Failure Rate</span>
+                </b>
+                <br>
+                {{result["fail"]}} / {{result["testcases"]}} = {{result["rate"]|dynamic_filter("fmt_percent")}}
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>

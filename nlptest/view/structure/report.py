@@ -1,6 +1,6 @@
 import collections
 from ..abstract.renderable import Renderable
-from ..core import HTML, Root, Container, Table, SentencePair, ToggleTable, ToggleRow
+from ..core import HTML, Root, Container, Table, SentencePair, ToggleTable, ToggleRow, CLTest
 from textattack.loggers import AttackLogManager
 
 
@@ -93,7 +93,14 @@ def get_cl_detail(testsuite):
                                   "fmt": "fmt_pct_numeric_pair",
                               }
                           ],
-                          toggle_content=[],
+                          toggle_content=[CLTest(test_name=test,
+                                                 test_type=t,
+                                                 capability=cap,
+                                                 description=testsuite.info[test]['description'],
+                                                 result={'fail':stats['fails'],
+                                                         'testcases': stats['testcases'],
+                                                         'rate': stats['fails'] / stats['testcases'],
+                                                         })],
                           )
                 )
             # _toggle_content.append(Table(

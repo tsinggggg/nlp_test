@@ -21,6 +21,7 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         HTMLSentencePair,
         HTMLToggleTable,
         HTMLToggleRow,
+        HTMLCLTest,
     )
     from ..core import (
         HTML,
@@ -30,6 +31,7 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         SentencePair,
         ToggleRow,
         ToggleTable,
+        CLTest,
     )
     return {
         HTML: HTMLHTML,
@@ -39,6 +41,7 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         SentencePair: HTMLSentencePair,
         ToggleRow: HTMLToggleRow,
         ToggleTable: HTMLToggleTable,
+        CLTest: HTMLCLTest,
     }
 
 

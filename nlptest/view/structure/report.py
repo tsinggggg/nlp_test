@@ -79,15 +79,35 @@ def get_cl_detail(testsuite):
             table_content = []
             for test in tests:
                 stats = testsuite.tests[test].get_stats()
-                table_content.append({"name": test,
-                                      "value": [(stats['fails'] / stats['testcases'], stats['testcases'])
-                                                ],
-                                      "fmt": "fmt_pct_numeric_pair", })
-            _toggle_content.append(Table(
-                table_content,
-                name="CL-" + cap + "-" + t + " Test Summary",
-                header=['test name', 'failure rate']
+                # table_content.append({"name": test,
+                #                       "value": [(stats['fails'] / stats['testcases'], stats['testcases'])
+                #                                 ],
+                #                       "fmt": "fmt_pct_numeric_pair", })
+                table_content.append(
+                ToggleRow(row_index=test,
+                          content=[
+                              {
+                                  "name": test,
+                                  "value": [(stats['fails'] / stats['testcases'], stats['testcases'])
+                                            ],
+                                  "fmt": "fmt_pct_numeric_pair",
+                              }
+                          ],
+                          toggle_content=[],
+                          )
+                )
+            # _toggle_content.append(Table(
+            #     table_content,
+            #     name= cap + "-" + t,
+            #     header=['test name', 'failure rate']
+            # ))
+            _toggle_content.append(ToggleTable(
+                header=['test name', 'failure rate'],
+                name=cap + "-" + t,
+                anchor_id=cap + "-" + t,
+                rows=table_content,
             ))
+
         toggle_content = Container(_toggle_content,
                                    anchor_id=cap + "_detail",
                                    name=cap,

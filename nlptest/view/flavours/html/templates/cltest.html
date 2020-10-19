@@ -53,7 +53,13 @@
             {% else %}
              &#9746
             {% endif %}
+            {% if e["label"] is not none%}
             |<b>Expected: {{e["label"]}}</b>
+            {% endif %}
+            {% if e["old"]%}
+            |<b>Pred: {{e["old"]["pred"]}}({{e["old"]["conf"] | dynamic_filter("fmt_percent")}})</b>
+            &#x2192
+            {% endif %}
             |<b>Pred: {{e["new"]["pred"]}}({{e["new"]["conf"] | dynamic_filter("fmt_percent")}})</b>
             <br>
             {% if e["old"]%}

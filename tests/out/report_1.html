@@ -96,7 +96,7 @@
         <tr>
             <th>Robustness</th>
                 <td>0.0%(2)</td>
-                <td>25.0%(4)</td>
+                <td>0.0%(4)</td>
                 <td>0.0%(0)</td>
         </tr>
     </tbody>
@@ -320,7 +320,7 @@ this is a [[wicked]] movie
             <tr data-toggle="collapse" data-target="#cl_result_table-2" class="accordion-toggle">
                 <th>Robustness</th>
     <td>0.0%(2)</td>
-    <td>25.0%(4)</td>
+    <td>0.0%(4)</td>
     <td>0.0%(0)</td>
 
             </tr>
@@ -521,7 +521,8 @@ this is a [[wicked]] movie
     <ul>
         <li>
              &#9745
-            |<b>Expected: None</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            &#x2192
             |<b>Pred: 1(> 99.9%)</b>
             <br>
             <p>this is a good movie</p>
@@ -531,7 +532,8 @@ this is a [[wicked]] movie
         </li>
         <li>
              &#9745
-            |<b>Expected: None</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            &#x2192
             |<b>Pred: 1(> 99.9%)</b>
             <br>
             <p>this is a good movie</p>
@@ -541,7 +543,8 @@ this is a [[wicked]] movie
         </li>
         <li>
              &#9745
-            |<b>Expected: None</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            &#x2192
             |<b>Pred: 0(99.8%)</b>
             <br>
             <p>this is a bad movie</p>
@@ -551,7 +554,8 @@ this is a [[wicked]] movie
         </li>
         <li>
              &#9745
-            |<b>Expected: None</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            &#x2192
             |<b>Pred: 0(> 99.9%)</b>
             <br>
             <p>this is a bad movie</p>
@@ -566,7 +570,7 @@ this is a [[wicked]] movie
 
             <tr data-toggle="collapse" data-target="#Robustness-INV-2" class="accordion-toggle">
                 <th>adding typos</th>
-    <td>50.0%(2)</td>
+    <td>0.0%(2)</td>
 
             </tr>
 
@@ -606,7 +610,7 @@ this is a [[wicked]] movie
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                1 / 2 = 50.0%
+                0 / 2 = 0.0%
             </td>
 
         </tr>
@@ -620,23 +624,25 @@ this is a [[wicked]] movie
     </p>
     <ul>
         <li>
-             &#9746
-            |<b>Expected: None</b>
-            |<b>Pred: 0(99.1%)</b>
+             &#9745
+            |<b>Pred: 1(> 99.9%)</b>
+            &#x2192
+            |<b>Pred: 1(> 99.9%)</b>
             <br>
             <p>this is a good movie</p>
             <b>&#x2193</b>
-            <p>this is a goo dmovie</p>
+            <p>thisi s a good movie</p>
 
         </li>
         <li>
              &#9745
-            |<b>Expected: None</b>
+            |<b>Pred: 0(> 99.9%)</b>
+            &#x2192
             |<b>Pred: 0(> 99.9%)</b>
             <br>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
-            <p>htis is a bad movie</p>
+            <p>thi sis a bad movie</p>
 
         </li>
     </ul>

@@ -89,14 +89,14 @@
     <tbody>
         <tr>
             <th>Correctness</th>
-                <td>0.0%(2)</td>
+                <td>0.0%(3)</td>
                 <td>0.0%(0)</td>
                 <td>0.0%(0)</td>
         </tr>
         <tr>
             <th>Robustness</th>
-                <td>0.0%(2)</td>
-                <td>0.0%(4)</td>
+                <td>0.0%(3)</td>
+                <td>0.0%(6)</td>
                 <td>0.0%(0)</td>
         </tr>
     </tbody>
@@ -112,7 +112,7 @@
     <tbody>
         <tr>
             <th>Number of successful attacks</th>
-                <td>2</td>
+                <td>3</td>
         </tr>
         <tr>
             <th>Number of failed attacks</th>
@@ -136,19 +136,19 @@
         </tr>
         <tr>
             <th>Average perturbed word %</th>
-                <td>20</td>
+                <td>18.9</td>
         </tr>
         <tr>
             <th>Average num. words per input</th>
-                <td>5</td>
+                <td>5.33</td>
         </tr>
         <tr>
             <th>Avg num queries:</th>
-                <td>50.5</td>
+                <td>45</td>
         </tr>
         <tr>
             <th>(Additional) grammar error rate</th>
-                <td>50</td>
+                <td>33.3</td>
         </tr>
     </tbody>
 </table>
@@ -185,6 +185,16 @@ this is a [[bad]] movie
 this is a [[wicked]] movie
 </div>
         </div>
+        <div class="row spacing">
+            
+<div class="sentence pair">
+    [[1 (100%)]] --> [[0 (96%)]]
+
+this is a slightly [[positive]] review
+
+this is a slightly [[preferential]] review
+</div>
+        </div>
 
             </div>
             <div class="row header">
@@ -193,7 +203,7 @@ this is a [[wicked]] movie
             </div>
             <div class="section-items">
                         <div class="row spacing">
-                <p class="h4">CL result table</p>
+                <p class="h4" align="center"><b>CL result table</b></p>
 <table class="table table-condensed stats" id="cl_result_table">
         <thead>
                 <th>
@@ -212,7 +222,7 @@ this is a [[wicked]] movie
     <tbody>
             <tr data-toggle="collapse" data-target="#cl_result_table-1" class="accordion-toggle">
                 <th>Correctness</th>
-    <td>0.0%(2)</td>
+    <td>0.0%(3)</td>
     <td>0.0%(0)</td>
     <td>0.0%(0)</td>
 
@@ -221,7 +231,7 @@ this is a [[wicked]] movie
             <td class="accordian-body collapse" id="cl_result_table-1">
 <!--                <div class="accordian-body collapse" id="cl_result_table-1">-->
                                 <div class="row spacing">
-                <p class="h4">Correctness-MFT</p>
+                <p class="h4" align="center"><b>Correctness-MFT</b></p>
 <table class="table table-condensed stats" id="Correctness-MFT">
         <thead>
                 <th>
@@ -234,7 +244,7 @@ this is a [[wicked]] movie
     <tbody>
             <tr data-toggle="collapse" data-target="#Correctness-MFT-1" class="accordion-toggle">
                 <th>in sample correctness</th>
-    <td>0.0%(2)</td>
+    <td>0.0%(3)</td>
 
             </tr>
 
@@ -274,7 +284,7 @@ this is a [[wicked]] movie
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 2 = 0.0%
+                0 / 3 = 0.0%
             </td>
 
         </tr>
@@ -303,6 +313,14 @@ this is a [[wicked]] movie
             <p>this is a bad movie</p>
 
         </li>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a slightly positive review</p>
+
+        </li>
     </ul>
 </div>
 <!--                </div>-->
@@ -319,8 +337,8 @@ this is a [[wicked]] movie
 
             <tr data-toggle="collapse" data-target="#cl_result_table-2" class="accordion-toggle">
                 <th>Robustness</th>
-    <td>0.0%(2)</td>
-    <td>0.0%(4)</td>
+    <td>0.0%(3)</td>
+    <td>0.0%(6)</td>
     <td>0.0%(0)</td>
 
             </tr>
@@ -328,7 +346,7 @@ this is a [[wicked]] movie
             <td class="accordian-body collapse" id="cl_result_table-2">
 <!--                <div class="accordian-body collapse" id="cl_result_table-2">-->
                                 <div class="row spacing">
-                <p class="h4">Robustness-MFT</p>
+                <p class="h4" align="center"><b>Robustness-MFT</b></p>
 <table class="table table-condensed stats" id="Robustness-MFT">
         <thead>
                 <th>
@@ -341,7 +359,7 @@ this is a [[wicked]] movie
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-MFT-1" class="accordion-toggle">
                 <th>adding thank-you MFT</th>
-    <td>0.0%(2)</td>
+    <td>0.0%(3)</td>
 
             </tr>
 
@@ -381,7 +399,7 @@ this is a [[wicked]] movie
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 2 = 0.0%
+                0 / 3 = 0.0%
             </td>
 
         </tr>
@@ -442,6 +460,30 @@ this is a [[wicked]] movie
             <p>this is a bad movie  Best regards,</p>
 
         </li>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a slightly positive review</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a slightly positive review  Thank you.</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Expected: 1</b>
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a slightly positive review  Best regards,</p>
+
+        </li>
     </ul>
 </div>
 <!--                </div>-->
@@ -453,7 +495,7 @@ this is a [[wicked]] movie
 
         </div>
         <div class="row spacing">
-                <p class="h4">Robustness-INV</p>
+                <p class="h4" align="center"><b>Robustness-INV</b></p>
 <table class="table table-condensed stats" id="Robustness-INV">
         <thead>
                 <th>
@@ -466,7 +508,7 @@ this is a [[wicked]] movie
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-INV-1" class="accordion-toggle">
                 <th>adding thank-you</th>
-    <td>0.0%(2)</td>
+    <td>0.0%(3)</td>
 
             </tr>
 
@@ -506,7 +548,7 @@ this is a [[wicked]] movie
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 2 = 0.0%
+                0 / 3 = 0.0%
             </td>
 
         </tr>
@@ -563,6 +605,28 @@ this is a [[wicked]] movie
             <p>this is a bad movie  Best regards,</p>
 
         </li>
+        <li>
+             &#9745
+            |<b>Pred: 1(> 99.9%)</b>
+            &#x2192
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a slightly positive review</p>
+            <b>&#x2193</b>
+            <p>this is a slightly positive review  Thank you.</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Pred: 1(> 99.9%)</b>
+            &#x2192
+            |<b>Pred: 1(> 99.9%)</b>
+            <br>
+            <p>this is a slightly positive review</p>
+            <b>&#x2193</b>
+            <p>this is a slightly positive review  Best regards,</p>
+
+        </li>
     </ul>
 </div>
 <!--                </div>-->
@@ -570,7 +634,7 @@ this is a [[wicked]] movie
 
             <tr data-toggle="collapse" data-target="#Robustness-INV-2" class="accordion-toggle">
                 <th>adding typos</th>
-    <td>0.0%(2)</td>
+    <td>0.0%(3)</td>
 
             </tr>
 
@@ -610,7 +674,7 @@ this is a [[wicked]] movie
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 2 = 0.0%
+                0 / 3 = 0.0%
             </td>
 
         </tr>
@@ -631,7 +695,7 @@ this is a [[wicked]] movie
             <br>
             <p>this is a good movie</p>
             <b>&#x2193</b>
-            <p>thisi s a good movie</p>
+            <p>this i sa good movie</p>
 
         </li>
         <li>
@@ -642,7 +706,18 @@ this is a [[wicked]] movie
             <br>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
-            <p>thi sis a bad movie</p>
+            <p>this isa  bad movie</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Pred: 1(> 99.9%)</b>
+            &#x2192
+            |<b>Pred: 1(98.4%)</b>
+            <br>
+            <p>this is a slightly positive review</p>
+            <b>&#x2193</b>
+            <p>this is a slightly poistive review</p>
 
         </li>
     </ul>

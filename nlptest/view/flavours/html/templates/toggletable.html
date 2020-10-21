@@ -1,5 +1,5 @@
 {% if name %}
-    <p class="h4">{{ name }}</p>
+    <p class="h4" align="center"><b>{{ name }}</b></p>
 {% endif %}
 <table class="table table-condensed stats" id="{{ anchor_id }}">
     {% if header %}
@@ -17,7 +17,7 @@
                 {{ row.render() }}
             </tr>
 
-            <td class="accordian-body collapse" id="{{ anchor_id }}-{{loop.index}}">
+            <td class="accordian-body collapse" id="{{ anchor_id }}-{{loop.index}}" >
 <!--                <div class="accordian-body collapse" id="{{ anchor_id }}-{{loop.index}}">-->
                     {% for toggle_content in row.content['toggle_content'] %}
                         {{ toggle_content.render() }}

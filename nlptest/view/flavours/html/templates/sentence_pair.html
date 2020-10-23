@@ -1,4 +1,12 @@
 
 <div class="sentence pair">
-    {{ string }}
+    |<b>Original Prediction</b> {{ original_label }} |
+    |<b>Perturbed Prediction</b> {{ perturbed_label }} |
+
+    <br>
+    <p>{{original_text}}</p>
+    {% if perturbed_text%}
+    <b>&#x2193</b>
+    <p>{{perturbed_text}}</p>
+    {% endif %}
 </div>

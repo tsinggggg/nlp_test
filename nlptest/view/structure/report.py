@@ -57,8 +57,40 @@ def get_report_overview(results):
 
 
 def get_ta_detail(logger: AttackLogManager):
+    from textattack.attack_results import SuccessfulAttackResult, SkippedAttackResult, FailedAttackResult
+    def _get_original_result_str(r):
+        output_label = r.original_result.raw_output.argmax()
+        confidence_score = r.original_result.raw_output[output_label]
+        output_str = f"{output_label} ({confidence_score:.0%})"
+        return output_str
+    def _get_successful_result_str(r):
+        output_label = r.perturbed_result.raw_output.argmax()
+        confidence_score = r.perturbed_result.raw_output[output_label]
+        output_str = f"{output_label} ({confidence_score:.0%})"
+        return output_str
+    def _get_skipped_result_str(r):
+        return "SKIPPED"
+    def _get_failed_result_str(r):
+        return "FAILED"
     results = logger.results
-    ret = [SentencePair(string=x.__str__('file')) for x in results]
+    # ret = [SentencePair(string=x.__str__('file')) for x in results]
+    ret = []
+    for r in results:
+        output_str = _get_original_result_str(r)
+        original_text = r.original_text()
+        perturbed_text = None
+        if isinstance(r, SkippedAttackResult):
+            perturbed_output_str = _get_skipped_result_str(r)
+        elif isinstance(r, SuccessfulAttackResult):
+            perturbed_output_str = _get_successful_result_str(r)
+            perturbed_text = r.perturbed_text()
+        elif isinstance(r, FailedAttackResult):
+            perturbed_output_str = _get_failed_result_str(r)
+        ret.append(SentencePair(original_label=output_str,
+                                perturbed_label=perturbed_output_str,
+                                original_text=original_text,
+                                perturbed_text=perturbed_text
+                                ))
     return ret
 
 

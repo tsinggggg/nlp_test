@@ -89,14 +89,14 @@
     <tbody>
         <tr>
             <th>Correctness</th>
-                <td>0.0%(3)</td>
+                <td>0.0%(4)</td>
                 <td>0.0%(0)</td>
                 <td>0.0%(0)</td>
         </tr>
         <tr>
             <th>Robustness</th>
-                <td>0.0%(3)</td>
-                <td>0.0%(6)</td>
+                <td>25.0%(4)</td>
+                <td>12.5%(8)</td>
                 <td>0.0%(0)</td>
         </tr>
     </tbody>
@@ -116,7 +116,7 @@
         </tr>
         <tr>
             <th>Number of failed attacks</th>
-                <td>0</td>
+                <td>1</td>
         </tr>
         <tr>
             <th>Number of skipped attacks</th>
@@ -128,11 +128,11 @@
         </tr>
         <tr>
             <th>Accuracy under attack</th>
-                <td>0</td>
+                <td>25</td>
         </tr>
         <tr>
             <th>Attack success rate</th>
-                <td>100</td>
+                <td>75</td>
         </tr>
         <tr>
             <th>Average perturbed word %</th>
@@ -140,15 +140,15 @@
         </tr>
         <tr>
             <th>Average num. words per input</th>
-                <td>5.33</td>
+                <td>6</td>
         </tr>
         <tr>
             <th>Avg num queries:</th>
-                <td>45</td>
+                <td>39.2</td>
         </tr>
         <tr>
             <th>(Additional) grammar error rate</th>
-                <td>33.3</td>
+                <td>25</td>
         </tr>
     </tbody>
 </table>
@@ -168,31 +168,47 @@
                         <div class="row spacing">
             
 <div class="sentence pair">
-    [[1 (100%)]] --> [[0 (99%)]]
+    |<b>Original Prediction</b> 1 (100%) |
+    |<b>Perturbed Prediction</b> 0 (99%) |
 
-this is a [[good]] movie
-
-this is a [[buon]] movie
+    <br>
+    <p>this is a good movie</p>
+    <b>&#x2193</b>
+    <p>this is a buon movie</p>
 </div>
         </div>
         <div class="row spacing">
             
 <div class="sentence pair">
-    [[0 (100%)]] --> [[1 (100%)]]
+    |<b>Original Prediction</b> 0 (100%) |
+    |<b>Perturbed Prediction</b> 1 (100%) |
 
-this is a [[bad]] movie
-
-this is a [[wicked]] movie
+    <br>
+    <p>this is a bad movie</p>
+    <b>&#x2193</b>
+    <p>this is a wicked movie</p>
 </div>
         </div>
         <div class="row spacing">
             
 <div class="sentence pair">
-    [[1 (100%)]] --> [[0 (96%)]]
+    |<b>Original Prediction</b> 1 (100%) |
+    |<b>Perturbed Prediction</b> 0 (96%) |
 
-this is a slightly [[positive]] review
+    <br>
+    <p>this is a slightly positive review</p>
+    <b>&#x2193</b>
+    <p>this is a slightly preferential review</p>
+</div>
+        </div>
+        <div class="row spacing">
+            
+<div class="sentence pair">
+    |<b>Original Prediction</b> 0 (100%) |
+    |<b>Perturbed Prediction</b> FAILED |
 
-this is a slightly [[preferential]] review
+    <br>
+    <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
 </div>
         </div>
 
@@ -222,13 +238,13 @@ this is a slightly [[preferential]] review
     <tbody>
             <tr data-toggle="collapse" data-target="#cl_result_table-1" class="accordion-toggle">
                 <th>Correctness</th>
-    <td>0.0%(3)</td>
+    <td>0.0%(4)</td>
     <td>0.0%(0)</td>
     <td>0.0%(0)</td>
 
             </tr>
 
-            <td class="accordian-body collapse" id="cl_result_table-1">
+            <td class="accordian-body collapse" id="cl_result_table-1" >
 <!--                <div class="accordian-body collapse" id="cl_result_table-1">-->
                                 <div class="row spacing">
                 <p class="h4" align="center"><b>Correctness-MFT</b></p>
@@ -244,11 +260,11 @@ this is a slightly [[preferential]] review
     <tbody>
             <tr data-toggle="collapse" data-target="#Correctness-MFT-1" class="accordion-toggle">
                 <th>in sample correctness</th>
-    <td>0.0%(3)</td>
+    <td>0.0%(4)</td>
 
             </tr>
 
-            <td class="accordian-body collapse" id="Correctness-MFT-1">
+            <td class="accordian-body collapse" id="Correctness-MFT-1" >
 <!--                <div class="accordian-body collapse" id="Correctness-MFT-1">-->
                         <div class="col-sm-6">
     <table class="table table-condensed stats">
@@ -284,7 +300,7 @@ this is a slightly [[preferential]] review
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 3 = 0.0%
+                0 / 4 = 0.0%
             </td>
 
         </tr>
@@ -321,6 +337,14 @@ this is a slightly [[preferential]] review
             <p>this is a slightly positive review</p>
 
         </li>
+        <li>
+             &#9745
+            |<b>Expected: 0</b>
+            |<b>Pred: 0(99.6%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
+
+        </li>
     </ul>
 </div>
 <!--                </div>-->
@@ -337,13 +361,13 @@ this is a slightly [[preferential]] review
 
             <tr data-toggle="collapse" data-target="#cl_result_table-2" class="accordion-toggle">
                 <th>Robustness</th>
-    <td>0.0%(3)</td>
-    <td>0.0%(6)</td>
+    <td>25.0%(4)</td>
+    <td>12.5%(8)</td>
     <td>0.0%(0)</td>
 
             </tr>
 
-            <td class="accordian-body collapse" id="cl_result_table-2">
+            <td class="accordian-body collapse" id="cl_result_table-2" >
 <!--                <div class="accordian-body collapse" id="cl_result_table-2">-->
                                 <div class="row spacing">
                 <p class="h4" align="center"><b>Robustness-MFT</b></p>
@@ -359,11 +383,11 @@ this is a slightly [[preferential]] review
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-MFT-1" class="accordion-toggle">
                 <th>adding thank-you MFT</th>
-    <td>0.0%(3)</td>
+    <td>25.0%(4)</td>
 
             </tr>
 
-            <td class="accordian-body collapse" id="Robustness-MFT-1">
+            <td class="accordian-body collapse" id="Robustness-MFT-1" >
 <!--                <div class="accordian-body collapse" id="Robustness-MFT-1">-->
                         <div class="col-sm-6">
     <table class="table table-condensed stats">
@@ -399,7 +423,7 @@ this is a slightly [[preferential]] review
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 3 = 0.0%
+                1 / 4 = 25.0%
             </td>
 
         </tr>
@@ -484,6 +508,30 @@ this is a slightly [[preferential]] review
             <p>this is a slightly positive review  Best regards,</p>
 
         </li>
+        <li>
+             &#9746
+            |<b>Expected: 0</b>
+            |<b>Pred: 1(99.8%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  Thank you.</p>
+
+        </li>
+        <li>
+             &#9746
+            |<b>Expected: 0</b>
+            |<b>Pred: 1(98.9%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  thank u.</p>
+
+        </li>
+        <li>
+             &#9746
+            |<b>Expected: 0</b>
+            |<b>Pred: 1(71.3%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  Best regards,</p>
+
+        </li>
     </ul>
 </div>
 <!--                </div>-->
@@ -508,11 +556,11 @@ this is a slightly [[preferential]] review
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-INV-1" class="accordion-toggle">
                 <th>adding thank-you</th>
-    <td>0.0%(3)</td>
+    <td>25.0%(4)</td>
 
             </tr>
 
-            <td class="accordian-body collapse" id="Robustness-INV-1">
+            <td class="accordian-body collapse" id="Robustness-INV-1" >
 <!--                <div class="accordian-body collapse" id="Robustness-INV-1">-->
                         <div class="col-sm-6">
     <table class="table table-condensed stats">
@@ -548,7 +596,7 @@ this is a slightly [[preferential]] review
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 3 = 0.0%
+                1 / 4 = 25.0%
             </td>
 
         </tr>
@@ -627,6 +675,28 @@ this is a slightly [[preferential]] review
             <p>this is a slightly positive review  Best regards,</p>
 
         </li>
+        <li>
+             &#9746
+            |<b>Pred: 0(99.6%)</b>
+            &#x2192
+            |<b>Pred: 1(99.8%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
+            <b>&#x2193</b>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  Thank you.</p>
+
+        </li>
+        <li>
+             &#9746
+            |<b>Pred: 0(99.6%)</b>
+            &#x2192
+            |<b>Pred: 1(98.9%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
+            <b>&#x2193</b>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  thank u.</p>
+
+        </li>
     </ul>
 </div>
 <!--                </div>-->
@@ -634,11 +704,11 @@ this is a slightly [[preferential]] review
 
             <tr data-toggle="collapse" data-target="#Robustness-INV-2" class="accordion-toggle">
                 <th>adding typos</th>
-    <td>0.0%(3)</td>
+    <td>0.0%(4)</td>
 
             </tr>
 
-            <td class="accordian-body collapse" id="Robustness-INV-2">
+            <td class="accordian-body collapse" id="Robustness-INV-2" >
 <!--                <div class="accordian-body collapse" id="Robustness-INV-2">-->
                         <div class="col-sm-6">
     <table class="table table-condensed stats">
@@ -674,7 +744,7 @@ this is a slightly [[preferential]] review
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 3 = 0.0%
+                0 / 4 = 0.0%
             </td>
 
         </tr>
@@ -691,11 +761,11 @@ this is a slightly [[preferential]] review
              &#9745
             |<b>Pred: 1(> 99.9%)</b>
             &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
+            |<b>Pred: 1(99.8%)</b>
             <br>
             <p>this is a good movie</p>
             <b>&#x2193</b>
-            <p>this i sa good movie</p>
+            <p>this is a godo movie</p>
 
         </li>
         <li>
@@ -706,18 +776,29 @@ this is a slightly [[preferential]] review
             <br>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
-            <p>this isa  bad movie</p>
+            <p>thisi s a bad movie</p>
 
         </li>
         <li>
              &#9745
             |<b>Pred: 1(> 99.9%)</b>
             &#x2192
-            |<b>Pred: 1(98.4%)</b>
+            |<b>Pred: 1(97.9%)</b>
             <br>
             <p>this is a slightly positive review</p>
             <b>&#x2193</b>
-            <p>this is a slightly poistive review</p>
+            <p>this is a slightly positiev review</p>
+
+        </li>
+        <li>
+             &#9745
+            |<b>Pred: 0(99.6%)</b>
+            &#x2192
+            |<b>Pred: 0(99.8%)</b>
+            <br>
+            <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
+            <b>&#x2193</b>
+            <p>sdf asdf asdf adsf asdf asdfz vzxcvastr wer</p>
 
         </li>
     </ul>

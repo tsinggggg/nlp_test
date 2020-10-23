@@ -4,7 +4,8 @@ from unittest import TestCase
 def test_case1():
     dataset = [['this is a good movie', 1],
                ['this is a bad movie', 0],
-               ['this is a slightly positive review', 1]
+               ['this is a slightly positive review', 1],
+               ['sdf asdf asdf asdf asdf asdfz vzxcvastr wer', 0]
               ]
     from transformers import pipeline
     p = pipeline("sentiment-analysis")

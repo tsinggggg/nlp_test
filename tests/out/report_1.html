@@ -69,21 +69,21 @@
 
         <div class="tab-content" style="padding-top: 10px;" >
                 <div role="tabpanel" class="tab-pane col-sm-12 active" id="overview-cl_overview">
-                        <div class="col-sm-12">
-            <p class="h4">CL Test Summary</p>
+                            <div class="row spacing">
+                <p class="h4">CL Test Summary</p>
 <table class="table table-condensed stats">
         <thead>
                 <th>
-                    capability
+                    Capability
                 </th>
                 <th>
-                    mft
+                    Minimum Functionality Test
                 </th>
                 <th>
-                    inv
+                    INVariance Test
                 </th>
                 <th>
-                    dir
+                    DIRectional Expectation Test
                 </th>
         </thead>
     <tbody>
@@ -102,7 +102,22 @@
     </tbody>
 </table>
 
-    </div>
+        </div>
+        <div class="row spacing">
+            <button id="toggle-tests-description" class="btn btn-default btn-sm" style="float: right" data-toggle="collapse" data-target="#cl_explain">
+    Toggle tests descriptions
+</button>
+        </div>
+        <div class="row spacing">
+            <div id="cl_explain" style="padding:20px" class="collapse"><div class="card card-body"><p>A Minimum Functionality test (<b>MFT</b>), inspired by unit tests in software engineering, 
+    is a collection of simple examples (and labels) to check a behavior within a capability. <br>
+    An Invariance test (<b>INV</b>) is when we apply label-preserving perturbations to inputs and expect the model 
+    prediction to remain the same.<br>
+    A Directional Expectation test (<b>DIR</b>) is similar to INV, except that the label is expected to change in 
+    a certain way.<br>
+    <a href='https://www.aclweb.org/anthology/2020.acl-main.442.pdf'>Link to reference</a>
+    </p></div></div>
+        </div>
 
                 </div>
                 <div role="tabpanel" class="tab-pane col-sm-12" id="overview-ta_overview">
@@ -761,11 +776,11 @@
              &#9745
             |<b>Pred: 1(> 99.9%)</b>
             &#x2192
-            |<b>Pred: 1(99.8%)</b>
+            |<b>Pred: 1(> 99.9%)</b>
             <br>
             <p>this is a good movie</p>
             <b>&#x2193</b>
-            <p>this is a godo movie</p>
+            <p>this i sa good movie</p>
 
         </li>
         <li>
@@ -776,29 +791,29 @@
             <br>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
-            <p>thisi s a bad movie</p>
+            <p>this is a bad moive</p>
 
         </li>
         <li>
              &#9745
             |<b>Pred: 1(> 99.9%)</b>
             &#x2192
-            |<b>Pred: 1(97.9%)</b>
+            |<b>Pred: 1(> 99.9%)</b>
             <br>
             <p>this is a slightly positive review</p>
             <b>&#x2193</b>
-            <p>this is a slightly positiev review</p>
+            <p>this is a slightly positive reviwe</p>
 
         </li>
         <li>
              &#9745
             |<b>Pred: 0(99.6%)</b>
             &#x2192
-            |<b>Pred: 0(99.8%)</b>
+            |<b>Pred: 0(99.6%)</b>
             <br>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
             <b>&#x2193</b>
-            <p>sdf asdf asdf adsf asdf asdfz vzxcvastr wer</p>
+            <p>sdf asdf asdf asdf asdf asdfzv zxcvastr wer</p>
 
         </li>
     </ul>

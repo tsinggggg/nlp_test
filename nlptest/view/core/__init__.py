@@ -6,3 +6,5 @@ from .sentence_pair import SentencePair
 from .togglerow import ToggleRow
 from .toggletable import ToggleTable
 from .cltest import CLTest
+from .togglebutton import ToggleButton
+from .collapse import Collapse

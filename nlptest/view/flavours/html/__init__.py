@@ -6,3 +6,5 @@ from .sentence_pair import HTMLSentencePair
 from .togglerow import HTMLToggleRow
 from .toggletable import HTMLToggleTable
 from .cltest import HTMLCLTest
+from .togglebutton import HTMLToggleButton
+from .collapse import HTMLCollapse

@@ -1,10 +1,19 @@
 import collections
 from ..abstract.renderable import Renderable
-from ..core import HTML, Root, Container, Table, SentencePair, ToggleTable, ToggleRow, CLTest
+from ..core import HTML, Root, Container, Table, SentencePair, ToggleTable, ToggleRow, CLTest, ToggleButton
 from textattack.loggers import AttackLogManager
 
 
 def get_report_overview(results):
+    test_description = """A Minimum Functionality test (<b>MFT</b>), inspired by unit tests in software engineering, 
+    is a collection of simple examples (and labels) to check a behavior within a capability. <br>
+    An Invariance test (<b>INV</b>) is when we apply label-preserving perturbations to inputs and expect the model 
+    prediction to remain the same.<br>
+    A Directional Expectation test (<b>DIR</b>) is similar to INV, except that the label is expected to change in 
+    a certain way.<br>
+    <a href='https://www.aclweb.org/anthology/2020.acl-main.442.pdf'>Link to reference</a>
+    """
+
     ret = []
     if "checklist" in results:
         from ...nlptest.testsuite.cl_test.cl_testsuite import get_summary_from_test_suite
@@ -21,15 +30,28 @@ def get_report_overview(results):
                 for cap, tests in cl_summary.items()
             ],
             name="CL Test Summary",
-            header=['capability', 'mft', 'inv', 'dir']
+            header=['Capability', 'Minimum Functionality Test', 'INVariance Test', 'DIRectional Expectation Test']
         )
+        desc = HTML(
+            f'<div id="cl_explain" style="padding:20px" class="collapse"><div class="card card-body"><p>{test_description}</p></div></div>',
+        )
+
         ret.append(
             Container(
-                [test_info_cl],
+                [test_info_cl,
+                 ToggleButton(
+                     "Toggle tests descriptions",
+                     "cl_explain",
+                     anchor_id="toggle-tests-description",
+                     name="Toggle tests descriptions",
+                 ),
+                 desc
+                 ],
                 anchor_id="cl_overview",
                 name="CL",
-                sequence_type="grid",
-            ))
+                sequence_type="list",
+            )
+            )
 
     from ...nlptest.testsuite.ta.ta_testsuite import get_result_from_logger
     if 'textattack' in results:

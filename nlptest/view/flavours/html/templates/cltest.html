@@ -44,32 +44,62 @@
     <p class="h4">
         Examples
     </p>
-    <ul>
+    {% set test_name_no_space = test_name.replace(' ', '-') %}
+    <div class="btn-group mr-2 cl-btn" id={{test_name_no_space}}>
+        <button class="btn btn-default" >ALL</button>
+        <button class="btn btn-default" >Y</button>
+        <button class="btn btn-default" >N</button>
+    </div>
+    <table class="table table-striped" id={{test_name_no_space}}-table>
+    <thead>
+        <tr>
+            {% if test_type == "MFT"%}
+            <th>Passed</th>
+            <th>Expected</th>
+            <th>Prediction</th>
+            <th>Text</th>
+            {% else %}
+            <th>Passed</th>
+            <th>Original Prediction</th>
+            <th>Perturbed Prediction</th>
+            <th>Text</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody class="searchable">
         {% for example in examples %}
         {% for e in example['examples'] %}
-        <li>
-            {% if e["succeed"] == 1%}
-             &#9745
+      <tr>
+          <td>
+             {% if e["succeed"] == 1%}
+             Y
             {% else %}
-             &#9746
+             N
             {% endif %}
-            {% if e["label"] is not none%}
-            |<b>Expected: {{e["label"]}}</b>
+          </td>
+          <td>
+            {% if test_type == "MFT"%}
+              <b>{{e["label"]}}</b>
+            {% else %}
+              <b>{{e["old"]["pred"]}}({{e["old"]["conf"] | dynamic_filter("fmt_percent")}})</b>
             {% endif %}
-            {% if e["old"]%}
-            |<b>Pred: {{e["old"]["pred"]}}({{e["old"]["conf"] | dynamic_filter("fmt_percent")}})</b>
-            &#x2192
-            {% endif %}
-            |<b>Pred: {{e["new"]["pred"]}}({{e["new"]["conf"] | dynamic_filter("fmt_percent")}})</b>
-            <br>
+          </td>
+          <td>
+              <b>{{e["new"]["pred"]}}({{e["new"]["conf"] | dynamic_filter("fmt_percent")}})</b>
+          </td>
+          <td>
             {% if e["old"]%}
             <p>{{e["old"]["text"]}}</p>
             <b>&#x2193</b>
             {% endif %}
             <p>{{e["new"]["text"]}}</p>
+          </td>
 
-        </li>
-        {% endfor %}
-        {% endfor %}
-    </ul>
+      </tr>
+    {% endfor %}
+    {% endfor %}
+
+    </tbody>
+    </table>
+
 </div>

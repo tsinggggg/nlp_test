@@ -44,3 +44,18 @@ $(document).ready(function () {
    });
 
 });
+
+
+$(document).ready(function () {
+
+    $(".cl-btn > button.btn").on("click", function(){
+       var letter = $(this).text();
+	$(" #"+$(this).parent().attr('id')+"-table"+" tr td:nth-child(1)").each(function () {
+            $(this).parent().show();
+            if($(this).text().toUpperCase().indexOf(letter) == -1  && letter !== 'ALL'){
+                $(this).parent().hide();
+            }
+       });
+   });
+
+});

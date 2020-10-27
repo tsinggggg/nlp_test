@@ -357,40 +357,85 @@
     <p class="h4">
         Examples
     </p>
-    <ul>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+    <div class="btn-group mr-2 cl-btn" id=in-sample-correctness>
+        <button class="btn btn-default" >ALL</button>
+        <button class="btn btn-default" >Y</button>
+        <button class="btn btn-default" >N</button>
+    </div>
+    <table class="table table-striped" id=in-sample-correctness-table>
+    <thead>
+        <tr>
+            <th>Passed</th>
+            <th>Expected</th>
+            <th>Prediction</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 0</b>
-            |<b>Pred: 0(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a bad movie</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 0</b>
-            |<b>Pred: 0(99.6%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>0(99.6%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
+          </td>
 
-        </li>
-    </ul>
+      </tr>
+
+    </tbody>
+    </table>
+
 </div>
 <!--                </div>-->
             </td>
@@ -480,104 +525,205 @@
     <p class="h4">
         Examples
     </p>
-    <ul>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+    <div class="btn-group mr-2 cl-btn" id=adding-thank-you-MFT>
+        <button class="btn btn-default" >ALL</button>
+        <button class="btn btn-default" >Y</button>
+        <button class="btn btn-default" >N</button>
+    </div>
+    <table class="table table-striped" id=adding-thank-you-MFT-table>
+    <thead>
+        <tr>
+            <th>Passed</th>
+            <th>Expected</th>
+            <th>Prediction</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie  Best regards,</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 0</b>
-            |<b>Pred: 0(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a bad movie</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 0</b>
-            |<b>Pred: 0(99.8%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>0(99.8%)</b>
+          </td>
+          <td>
             <p>this is a bad movie  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 0</b>
-            |<b>Pred: 0(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a bad movie  Best regards,</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Expected: 1</b>
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review  Best regards,</p>
+          </td>
 
-        </li>
-        <li>
-             &#9746
-            |<b>Expected: 0</b>
-            |<b>Pred: 1(99.8%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>1(99.8%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9746
-            |<b>Expected: 0</b>
-            |<b>Pred: 1(98.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>1(98.9%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  thank u.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9746
-            |<b>Expected: 0</b>
-            |<b>Pred: 1(71.3%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              <b>0</b>
+          </td>
+          <td>
+              <b>1(71.3%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  Best regards,</p>
+          </td>
 
-        </li>
-    </ul>
+      </tr>
+
+    </tbody>
+    </table>
+
 </div>
 <!--                </div>-->
             </td>
@@ -653,96 +799,161 @@
     <p class="h4">
         Examples
     </p>
-    <ul>
-        <li>
-             &#9745
-            |<b>Pred: 1(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+    <div class="btn-group mr-2 cl-btn" id=adding-thank-you>
+        <button class="btn btn-default" >ALL</button>
+        <button class="btn btn-default" >Y</button>
+        <button class="btn btn-default" >N</button>
+    </div>
+    <table class="table table-striped" id=adding-thank-you-table>
+    <thead>
+        <tr>
+            <th>Passed</th>
+            <th>Original Prediction</th>
+            <th>Perturbed Prediction</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie</p>
             <b>&#x2193</b>
             <p>this is a good movie  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 1(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie</p>
             <b>&#x2193</b>
             <p>this is a good movie  Best regards,</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 0(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 0(99.8%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
+              <b>0(99.8%)</b>
+          </td>
+          <td>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
             <p>this is a bad movie  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 0(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 0(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
             <p>this is a bad movie  Best regards,</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 1(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review</p>
             <b>&#x2193</b>
             <p>this is a slightly positive review  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 1(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review</p>
             <b>&#x2193</b>
             <p>this is a slightly positive review  Best regards,</p>
+          </td>
 
-        </li>
-        <li>
-             &#9746
-            |<b>Pred: 0(99.6%)</b>
-            &#x2192
-            |<b>Pred: 1(99.8%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              <b>0(99.6%)</b>
+          </td>
+          <td>
+              <b>1(99.8%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
             <b>&#x2193</b>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  Thank you.</p>
+          </td>
 
-        </li>
-        <li>
-             &#9746
-            |<b>Pred: 0(99.6%)</b>
-            &#x2192
-            |<b>Pred: 1(98.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              <b>0(99.6%)</b>
+          </td>
+          <td>
+              <b>1(98.9%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
             <b>&#x2193</b>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer  thank u.</p>
+          </td>
 
-        </li>
-    </ul>
+      </tr>
+
+    </tbody>
+    </table>
+
 </div>
 <!--                </div>-->
             </td>
@@ -801,52 +1012,93 @@
     <p class="h4">
         Examples
     </p>
-    <ul>
-        <li>
-             &#9745
-            |<b>Pred: 1(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+    <div class="btn-group mr-2 cl-btn" id=adding-typos>
+        <button class="btn btn-default" >ALL</button>
+        <button class="btn btn-default" >Y</button>
+        <button class="btn btn-default" >N</button>
+    </div>
+    <table class="table table-striped" id=adding-typos-table>
+    <thead>
+        <tr>
+            <th>Passed</th>
+            <th>Original Prediction</th>
+            <th>Perturbed Prediction</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a good movie</p>
             <b>&#x2193</b>
-            <p>thisi s a good movie</p>
+            <p>this is a good movie</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 0(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 0(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
+              <b>0(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
-            <p>this is a bad omvie</p>
+            <p>this is a bad movei</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 1(> 99.9%)</b>
-            &#x2192
-            |<b>Pred: 1(> 99.9%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
+              <b>1(> 99.9%)</b>
+          </td>
+          <td>
             <p>this is a slightly positive review</p>
             <b>&#x2193</b>
-            <p>this is a slightly positiver eview</p>
+            <p>this isa  slightly positive review</p>
+          </td>
 
-        </li>
-        <li>
-             &#9745
-            |<b>Pred: 0(99.6%)</b>
-            &#x2192
-            |<b>Pred: 0(99.7%)</b>
-            <br>
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              <b>0(99.6%)</b>
+          </td>
+          <td>
+              <b>0(99.7%)</b>
+          </td>
+          <td>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
             <b>&#x2193</b>
-            <p>sdf asdf asdf asdf asfd asdfz vzxcvastr wer</p>
+            <p>sdf asdf asd fasdf asdf asdfz vzxcvastr wer</p>
+          </td>
 
-        </li>
-    </ul>
+      </tr>
+
+    </tbody>
+    </table>
+
 </div>
 <!--                </div>-->
             </td>
@@ -929,6 +1181,21 @@ $(document).ready(function () {
             }
             if(letter == "SUCCESSFUL" && ($(this).text().toUpperCase().indexOf("FAILED") != -1 ||
              $(this).text().toUpperCase().indexOf("SKIPPED") != -1)){
+                $(this).parent().hide();
+            }
+       });
+   });
+
+});
+
+
+$(document).ready(function () {
+
+    $(".cl-btn > button.btn").on("click", function(){
+       var letter = $(this).text();
+	$(" #"+$(this).parent().attr('id')+"-table"+" tr td:nth-child(1)").each(function () {
+            $(this).parent().show();
+            if($(this).text().toUpperCase().indexOf(letter) == -1  && letter !== 'ALL'){
                 $(this).parent().hide();
             }
        });

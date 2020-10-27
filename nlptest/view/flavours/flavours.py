@@ -24,6 +24,7 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         HTMLCLTest,
         HTMLToggleButton,
         HTMLCollapse,
+        HTMLTA,
     )
     from ..core import (
         HTML,
@@ -36,6 +37,7 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         CLTest,
         ToggleButton,
         Collapse,
+        TA,
     )
     return {
         HTML: HTMLHTML,
@@ -48,6 +50,7 @@ def get_html_renderable_mapping() -> Dict[Type[Renderable], Type[Renderable]]:
         CLTest: HTMLCLTest,
         ToggleButton: HTMLToggleButton,
         Collapse: HTMLCollapse,
+        TA: HTMLTA,
     }
 
 

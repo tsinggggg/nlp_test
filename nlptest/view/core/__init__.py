@@ -8,3 +8,4 @@ from .toggletable import ToggleTable
 from .cltest import CLTest
 from .togglebutton import ToggleButton
 from .collapse import Collapse
+from .ta import TA

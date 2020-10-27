@@ -182,49 +182,79 @@
             <div class="section-items">
                         <div class="row spacing">
             
-<div class="sentence pair">
-    |<b>Original Prediction</b> 1 (100%) |
-    |<b>Perturbed Prediction</b> 0 (99%) |
 
-    <br>
-    <p>this is a good movie</p>
-    <b>&#x2193</b>
-    <p>this is a buon movie</p>
-</div>
-        </div>
-        <div class="row spacing">
-            
-<div class="sentence pair">
-    |<b>Original Prediction</b> 0 (100%) |
-    |<b>Perturbed Prediction</b> 1 (100%) |
+<!--<div class="col-sm-12">-->
 
-    <br>
-    <p>this is a bad movie</p>
-    <b>&#x2193</b>
-    <p>this is a wicked movie</p>
-</div>
-        </div>
-        <div class="row spacing">
-            
-<div class="sentence pair">
-    |<b>Original Prediction</b> 1 (100%) |
-    |<b>Perturbed Prediction</b> 0 (96%) |
+    <div class="btn-toolbar" role="toolbar" id="TaResultToolbar">
+    <div class="btn-group mr-2" id="ta_filter_btn">
+        <button class="btn btn-default" id="ALL_TA">ALL</button>
+        <button class="btn btn-default" id="Fail_TA">Failed</button>
+        <button class="btn btn-default" id="Skip_TA">Skipped</button>
+        <button class="btn btn-default" id="Success_TA">Successful</button>
+    </div>
 
-    <br>
-    <p>this is a slightly positive review</p>
-    <b>&#x2193</b>
-    <p>this is a slightly preferential review</p>
-</div>
-        </div>
-        <div class="row spacing">
-            
-<div class="sentence pair">
-    |<b>Original Prediction</b> 0 (100%) |
-    |<b>Perturbed Prediction</b> FAILED |
+    </div>
+    <table class="table table-striped" id="ta_detail_table">
+    <thead>
+        <tr>
+            <th>Original Prediction</th>
+            <th>Perturbed Prediction</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (99%)
+        </td>
+        <td>
+            this is a good movie --> this is a buon movie
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            this is a bad movie --> this is a wicked movie
+        </td>
+      </tr>
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (96%)
+        </td>
+        <td>
+            this is a slightly positive review --> this is a slightly preferential review
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            FAILED
+        </td>
+        <td>
+            sdf asdf asdf asdf asdf asdfz vzxcvastr wer --> None
+        </td>
+      </tr>
 
-    <br>
-    <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
-</div>
+    </tbody>
+    </table>
+
+
+
+
+<!--</div>-->
         </div>
 
             </div>
@@ -780,7 +810,7 @@
             <br>
             <p>this is a good movie</p>
             <b>&#x2193</b>
-            <p>this i sa good movie</p>
+            <p>thisi s a good movie</p>
 
         </li>
         <li>
@@ -791,7 +821,7 @@
             <br>
             <p>this is a bad movie</p>
             <b>&#x2193</b>
-            <p>this is a bad moive</p>
+            <p>this is a bad omvie</p>
 
         </li>
         <li>
@@ -802,18 +832,18 @@
             <br>
             <p>this is a slightly positive review</p>
             <b>&#x2193</b>
-            <p>this is a slightly positive reviwe</p>
+            <p>this is a slightly positiver eview</p>
 
         </li>
         <li>
              &#9745
             |<b>Pred: 0(99.6%)</b>
             &#x2192
-            |<b>Pred: 0(99.6%)</b>
+            |<b>Pred: 0(99.7%)</b>
             <br>
             <p>sdf asdf asdf asdf asdf asdfz vzxcvastr wer</p>
             <b>&#x2193</b>
-            <p>sdf asdf asdf asdf asdf asdfzv zxcvastr wer</p>
+            <p>sdf asdf asdf asdf asfd asdfz vzxcvastr wer</p>
 
         </li>
     </ul>
@@ -880,6 +910,29 @@ $("a[href^='#'].anchor").on('click', function (e) {
         // (default click behaviour)
         window.location.hash = hash;
     });
+
+});
+
+
+$(document).ready(function () {
+
+    $(" #ta_filter_btn > button.btn").on("click", function(){
+       var letter =  $(this).text().toUpperCase();
+
+	$(" #ta_detail_table tr td:nth-child(2)").each(function () {
+            $(this).parent().show();
+            if(letter == "FAILED" && $(this).text().toUpperCase().indexOf(letter) == -1){
+                $(this).parent().hide();
+            }
+            if(letter == "SKIPPED" && $(this).text().toUpperCase().indexOf(letter) == -1){
+                $(this).parent().hide();
+            }
+            if(letter == "SUCCESSFUL" && ($(this).text().toUpperCase().indexOf("FAILED") != -1 ||
+             $(this).text().toUpperCase().indexOf("SKIPPED") != -1)){
+                $(this).parent().hide();
+            }
+       });
+   });
 
 });</script>
 </body>

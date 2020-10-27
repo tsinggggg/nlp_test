@@ -1,6 +1,6 @@
 import collections
 from ..abstract.renderable import Renderable
-from ..core import HTML, Root, Container, Table, SentencePair, ToggleTable, ToggleRow, CLTest, ToggleButton
+from ..core import HTML, Root, Container, Table, SentencePair, ToggleTable, ToggleRow, CLTest, ToggleButton, TA
 from textattack.loggers import AttackLogManager
 
 
@@ -108,12 +108,12 @@ def get_ta_detail(logger: AttackLogManager):
             perturbed_text = r.perturbed_text()
         elif isinstance(r, FailedAttackResult):
             perturbed_output_str = _get_failed_result_str(r)
-        ret.append(SentencePair(original_label=output_str,
+        ret.append(dict(original_label=output_str,
                                 perturbed_label=perturbed_output_str,
                                 original_text=original_text,
                                 perturbed_text=perturbed_text
                                 ))
-    return ret
+    return [TA(examples=ret)]
 
 
 def get_cl_detail(testsuite):

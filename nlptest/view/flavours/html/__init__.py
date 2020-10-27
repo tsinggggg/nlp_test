@@ -8,3 +8,4 @@ from .toggletable import HTMLToggleTable
 from .cltest import HTMLCLTest
 from .togglebutton import HTMLToggleButton
 from .collapse import HTMLCollapse
+from .ta import HTMLTA

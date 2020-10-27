@@ -1,0 +1,43 @@
+
+
+<!--<div class="col-sm-12">-->
+
+    <div class="btn-toolbar" role="toolbar" id="TaResultToolbar">
+    <div class="btn-group mr-2" id="ta_filter_btn">
+        <button class="btn btn-default" id="ALL_TA">ALL</button>
+        <button class="btn btn-default" id="Fail_TA">Failed</button>
+        <button class="btn btn-default" id="Skip_TA">Skipped</button>
+        <button class="btn btn-default" id="Success_TA">Successful</button>
+    </div>
+
+    </div>
+    <table class="table table-striped" id="ta_detail_table">
+    <thead>
+        <tr>
+            <th>Original Prediction</th>
+            <th>Perturbed Prediction</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+      {% for example in examples %}
+      <tr>
+        <td>
+            {{example['original_label']}}
+        </td>
+        <td>
+            {{example['perturbed_label']}}
+        </td>
+        <td>
+            {{example['original_text']}} --> {{example['perturbed_text']}}
+        </td>
+      </tr>
+    {% endfor %}
+
+    </tbody>
+    </table>
+
+
+
+
+<!--</div>-->

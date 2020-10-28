@@ -80,20 +80,20 @@
           </td>
           <td>
             {% if test_type == "MFT"%}
-              <b>{{e["label"]}}</b>
+              {{e["label"]}}
             {% else %}
-              <b>{{e["old"]["pred"]}}({{e["old"]["conf"] | dynamic_filter("fmt_percent")}})</b>
+              {{e["old"]["pred"]}}({{e["old"]["conf"] | dynamic_filter("fmt_percent")}})
             {% endif %}
           </td>
           <td>
-              <b>{{e["new"]["pred"]}}({{e["new"]["conf"] | dynamic_filter("fmt_percent")}})</b>
+              {{e["new"]["pred"]}}({{e["new"]["conf"] | dynamic_filter("fmt_percent")}})
           </td>
           <td>
             {% if e["old"]%}
-            <p>{{e["old"]["text"]}}</p>
-            <b>&#x2193</b>
+            {{e["old"]["text"]}}
+            &#x2193
             {% endif %}
-            <p>{{e["new"]["text"]}}</p>
+            {{e["new"]["text"]}}
           </td>
 
       </tr>

@@ -5,7 +5,12 @@ def test_case1():
     dataset = [['this is a good movie', 1],
                ['this is a bad movie', 0],
                ['this is a slightly positive review', 1],
-               ['sdf asdf asdf asdf asdf asdfz vzxcvastr wer', 0]
+               ['sdf asdf asdf asdf asdf asdfz vzxcvastr wer', 0],
+               ['i am mad', 1],
+               ['i am glad', 1],
+               ['i had a great meal', 1],
+               ['i am so sad', 0],
+               ['i have no idea if i am happy', 0]
               ]
     from transformers import pipeline
     p = pipeline("sentiment-analysis")

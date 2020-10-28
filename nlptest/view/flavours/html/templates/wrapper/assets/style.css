@@ -8,3 +8,8 @@ body {
 .tableFixHead thead th { position: sticky; top: 0; }
 
 .tableFixHead thead th  { background:#eee; }
+
+.tableFixHead-ta          { overflow-y: auto; height: 300px; }
+.tableFixHead-ta thead th { position: sticky; top: 0; }
+
+.tableFixHead-ta thead th  { background:#eee; }

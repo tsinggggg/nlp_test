@@ -21,7 +21,12 @@
 .tableFixHead          { overflow-y: auto; height: 300px; }
 .tableFixHead thead th { position: sticky; top: 0; }
 
-.tableFixHead thead th  { background:#eee; }</style>
+.tableFixHead thead th  { background:#eee; }
+
+.tableFixHead-ta          { overflow-y: auto; height: 300px; }
+.tableFixHead-ta thead th { position: sticky; top: 0; }
+
+.tableFixHead-ta thead th  { background:#eee; }</style>
 </head>
 
 <body>
@@ -93,14 +98,14 @@
     <tbody>
         <tr>
             <th>Correctness</th>
-                <td>0.0%(4)</td>
+                <td>11.1%(9)</td>
                 <td>0.0%(0)</td>
                 <td>0.0%(0)</td>
         </tr>
         <tr>
             <th>Robustness</th>
-                <td>25.0%(4)</td>
-                <td>12.5%(8)</td>
+                <td>44.4%(9)</td>
+                <td>27.8%(18)</td>
                 <td>0.0%(0)</td>
         </tr>
     </tbody>
@@ -131,7 +136,7 @@
     <tbody>
         <tr>
             <th>Number of successful attacks</th>
-                <td>3</td>
+                <td>7</td>
         </tr>
         <tr>
             <th>Number of failed attacks</th>
@@ -139,35 +144,35 @@
         </tr>
         <tr>
             <th>Number of skipped attacks</th>
-                <td>0</td>
+                <td>1</td>
         </tr>
         <tr>
             <th>Original accuracy</th>
-                <td>100</td>
+                <td>88.9</td>
         </tr>
         <tr>
             <th>Accuracy under attack</th>
-                <td>25</td>
+                <td>11.1</td>
         </tr>
         <tr>
             <th>Attack success rate</th>
-                <td>75</td>
+                <td>87.5</td>
         </tr>
         <tr>
             <th>Average perturbed word %</th>
-                <td>18.9</td>
+                <td>24.6</td>
         </tr>
         <tr>
             <th>Average num. words per input</th>
-                <td>6</td>
+                <td>5.22</td>
         </tr>
         <tr>
             <th>Avg num queries:</th>
-                <td>39.2</td>
+                <td>45.8</td>
         </tr>
         <tr>
             <th>(Additional) grammar error rate</th>
-                <td>25</td>
+                <td>22.2</td>
         </tr>
     </tbody>
 </table>
@@ -198,6 +203,7 @@
     </div>
 
     </div>
+<div class="tableFixHead-ta">
     <table class="table table-striped" id="ta_detail_table">
     <thead>
         <tr>
@@ -251,10 +257,65 @@
             sdf asdf asdf asdf asdf asdfz vzxcvastr wer --> None
         </td>
       </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            SKIPPED
+        </td>
+        <td>
+            i am mad --> None
+        </td>
+      </tr>
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (84%)
+        </td>
+        <td>
+            i am glad --> i am flattered
+        </td>
+      </tr>
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (90%)
+        </td>
+        <td>
+            i had a great meal --> i had a whopping meal
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            i am so sad --> i am well sombre
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            i have no idea if i am happy --> i have no idea if i am joyous
+        </td>
+      </tr>
 
     </tbody>
     </table>
-
+</div>
 
 
 
@@ -287,7 +348,7 @@
     <tbody>
             <tr data-toggle="collapse" data-target="#cl_result_table-1" class="accordion-toggle">
                 <th>Correctness</th>
-    <td>0.0%(4)</td>
+    <td>11.1%(9)</td>
     <td>0.0%(0)</td>
     <td>0.0%(0)</td>
 
@@ -309,7 +370,7 @@
     <tbody>
             <tr data-toggle="collapse" data-target="#Correctness-MFT-1" class="accordion-toggle">
                 <th>in sample correctness</th>
-    <td>0.0%(4)</td>
+    <td>11.1%(9)</td>
 
             </tr>
 
@@ -349,7 +410,7 @@
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 4 = 0.0%
+                1 / 9 = 11.1%
             </td>
 
         </tr>
@@ -437,6 +498,81 @@
           </td>
 
       </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am mad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i am glad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i had a great meal
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+            i am so sad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+            i have no idea if i am happy
+          </td>
+
+      </tr>
 
     </tbody>
     </table>
@@ -457,8 +593,8 @@
 
             <tr data-toggle="collapse" data-target="#cl_result_table-2" class="accordion-toggle">
                 <th>Robustness</th>
-    <td>25.0%(4)</td>
-    <td>12.5%(8)</td>
+    <td>44.4%(9)</td>
+    <td>27.8%(18)</td>
     <td>0.0%(0)</td>
 
             </tr>
@@ -479,7 +615,7 @@
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-MFT-1" class="accordion-toggle">
                 <th>adding thank-you MFT</th>
-    <td>25.0%(4)</td>
+    <td>44.4%(9)</td>
 
             </tr>
 
@@ -519,7 +655,7 @@
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                1 / 4 = 25.0%
+                4 / 9 = 44.4%
             </td>
 
         </tr>
@@ -727,6 +863,231 @@
           </td>
 
       </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am mad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              0(99.1%)
+          </td>
+          <td>
+            i am mad  Best regards,
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(99.7%)
+          </td>
+          <td>
+            i am mad  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i am glad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i am glad  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i am glad  Best regards,
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i had a great meal
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i had a great meal  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i had a great meal  Best regards,
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              1(99.7%)
+          </td>
+          <td>
+            i am so sad  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              1(99.6%)
+          </td>
+          <td>
+            i am so sad  thank u.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+            i am so sad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            i have no idea if i am happy  thank u.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              1(99.2%)
+          </td>
+          <td>
+            i have no idea if i am happy  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+            i have no idea if i am happy
+          </td>
+
+      </tr>
 
     </tbody>
     </table>
@@ -755,7 +1116,7 @@
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-INV-1" class="accordion-toggle">
                 <th>adding thank-you</th>
-    <td>25.0%(4)</td>
+    <td>44.4%(9)</td>
 
             </tr>
 
@@ -795,7 +1156,7 @@
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                1 / 4 = 25.0%
+                4 / 9 = 44.4%
             </td>
 
         </tr>
@@ -959,6 +1320,176 @@
           </td>
 
       </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            i am mad
+            &#x2193
+            i am mad  thank u.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              1(99.7%)
+          </td>
+          <td>
+            i am mad
+            &#x2193
+            i am mad  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i am glad
+            &#x2193
+            i am glad  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i am glad
+            &#x2193
+            i am glad  Best regards,
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i had a great meal
+            &#x2193
+            i had a great meal  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+            i had a great meal
+            &#x2193
+            i had a great meal  Best regards,
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+              1(99.7%)
+          </td>
+          <td>
+            i am so sad
+            &#x2193
+            i am so sad  Thank you.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+              1(99.6%)
+          </td>
+          <td>
+            i am so sad
+            &#x2193
+            i am so sad  thank u.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            i have no idea if i am happy
+            &#x2193
+            i have no idea if i am happy  thank u.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+              1(99.2%)
+          </td>
+          <td>
+            i have no idea if i am happy
+            &#x2193
+            i have no idea if i am happy  Thank you.
+          </td>
+
+      </tr>
 
     </tbody>
     </table>
@@ -970,7 +1501,7 @@
 
             <tr data-toggle="collapse" data-target="#Robustness-INV-2" class="accordion-toggle">
                 <th>adding typos</th>
-    <td>0.0%(4)</td>
+    <td>11.1%(9)</td>
 
             </tr>
 
@@ -1010,7 +1541,7 @@
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 4 = 0.0%
+                1 / 9 = 11.1%
             </td>
 
         </tr>
@@ -1046,12 +1577,12 @@
               1(> 99.9%)
           </td>
           <td>
-              1(99.8%)
+              1(> 99.9%)
           </td>
           <td>
             this is a good movie
             &#x2193
-            this is a godo movie
+            tihs is a good movie
           </td>
 
       </tr>
@@ -1068,7 +1599,7 @@
           <td>
             this is a bad movie
             &#x2193
-            this is a bad omvie
+            tihs is a bad movie
           </td>
 
       </tr>
@@ -1080,12 +1611,12 @@
               1(> 99.9%)
           </td>
           <td>
-              1(> 99.9%)
+              1(97.5%)
           </td>
           <td>
             this is a slightly positive review
             &#x2193
-            this is a slightly positive reviwe
+            this is a slightly positvie review
           </td>
 
       </tr>
@@ -1097,12 +1628,97 @@
               0(99.6%)
           </td>
           <td>
-              0(99.7%)
+              0(99.6%)
           </td>
           <td>
             sdf asdf asdf asdf asdf asdfz vzxcvastr wer
             &#x2193
-            sdf asdf asdf asdf asdf asdfz vzxcvasrt wer
+            sdf asdf asdf asdf asdf sadfz vzxcvastr wer
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              0(99.4%)
+          </td>
+          <td>
+            i am mad
+            &#x2193
+            i am mda
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(94.4%)
+          </td>
+          <td>
+            i am glad
+            &#x2193
+            i am gald
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              0(92.3%)
+          </td>
+          <td>
+            i had a great meal
+            &#x2193
+            i had  agreat meal
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am so sad
+            &#x2193
+            ia m so sad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+              0(99.2%)
+          </td>
+          <td>
+            i have no idea if i am happy
+            &#x2193
+            i have no idea if ia m happy
           </td>
 
       </tr>

@@ -5,7 +5,8 @@ from checklist.test_types import MFT, INV, DIR
 from checklist.test_suite import TestSuite
 from checklist.editor import Editor
 from transformers import TextClassificationPipeline
-from .predict_functions import predict_function_for_huggingface_pipeline
+from sklearn.pipeline import Pipeline
+from .predict_functions import *
 from ...config import config, _parse_perturb
 
 
@@ -163,6 +164,11 @@ def run_cl_test(testsuite, pipeline):
     if isinstance(pipeline, TextClassificationPipeline):
         pred_f = functools.partial(predict_function_for_huggingface_pipeline,
                                    pipeline=pipeline)
+    elif isinstance(pipeline, Pipeline):
+        pred_f = functools.partial(predict_function_for_sklearn_pipeline,
+                                   pipeline=pipeline)
+    else:
+        raise NotImplementedError()
     testsuite.run(pred_f)
     return testsuite
 

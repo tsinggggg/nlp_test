@@ -3,3 +3,8 @@ body {
   padding-top: 80px;
 }
 {% endif %}
+
+.tableFixHead          { overflow-y: auto; height: 300px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+.tableFixHead thead th  { background:#eee; }

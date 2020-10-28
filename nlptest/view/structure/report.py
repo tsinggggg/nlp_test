@@ -191,7 +191,6 @@ def get_cl_detail(testsuite):
 
         _rows.append(this_row)
     ret = ToggleTable(header=['capability'] + test_types,
-                      name="CL result table",
                       rows=_rows,
                       anchor_id="cl_result_table"
                      )

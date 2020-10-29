@@ -6,26 +6,27 @@ rai_cache_path: "~/.cache/rai"
 checklist:
   run: True
   tests:
-    in sample correctness:
+    this is test name 1:
       type: "MFT"
       capability: "Correctness"
-      description: "testing samples in train/test data"
-      num_sentences: 10
+      description: "this is a xxx sth"
+      num_sentences:
       perturb:
       template:
-
-    adding thank-you:
-      type: "INV"
-      capability: "Robustness"
-      description: "adding thank-yous to end of sentence"
-      num_sentences: 10
-      perturb:
-        change: "append_to_end"
-        phrases:
-          - " Thank you."
-          - " Best regards,"
-          - " thank u."
-      template:
+        - templates: "this is {a:adj} {mask}."
+          adj:
+            - "good"
+            - "excellent"
+            - "great"
+          labels: 1
+          nsamples: 10
+        - templates: "this is {a:adj} {mask}."
+          adj:
+            - "bad"
+            - "terrible"
+            - "absurd"
+          labels: 0
+          nsamples: 10
 
     adding typos:
       type: "INV"

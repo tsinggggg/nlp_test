@@ -6,8 +6,7 @@ def test_data():
     return   [['this is a good movie', 1],
                ['this is a bad movie', 0],
                ['this is a slightly positive review', 1],
-               ['sdf asdf asdf asdf asdf asdfz vzxcvastr wer', 0],
-               ['i am mad', 1],
+               ['i am mad', 0],
                ['i am glad', 1],
                ['i had a great meal', 1],
                ['i am so sad', 0],
@@ -35,7 +34,8 @@ class TestsTest(TestCase):
     def test_report(self):
         from nlptest.nlptest.nlp_report import NLPReport
         dataset, model, tokenizer = test_case1()
-        report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer)
+        report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer,
+                           config_file="./config_test.yaml")
         result = report.test_result
         result['checklist'].summary()
         result['textattack'].log_summary()

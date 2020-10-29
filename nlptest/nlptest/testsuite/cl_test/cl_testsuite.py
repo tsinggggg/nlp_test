@@ -72,16 +72,16 @@ def create_MFT(dataset=None, templates=None, perturb=None, name=None, capability
                            name=name, capability=capability, description=description
                            )
 
-    # elif templates:
-    #     editor, ret = Editor(), None
-    #     for t in templates:
-    #         if ret is None:
-    #             ret = editor.template(**t)
-    #         else:
-    #             ret += editor.template(**t)
-    #     test = _create_MFT(**ret,
-    #                        name=name, capability=capability, description=description
-    #                        )
+    elif templates:
+        editor, ret = Editor(), None
+        for t in templates:
+            if ret is None:
+                ret = editor.template(**t)
+            else:
+                ret += editor.template(**t)
+        test = _create_MFT(**ret,
+                           name=name, capability=capability, description=description
+                           )
     else:
         raise ValueError('please provide at least one of dataset or templates for MFT')
 
@@ -133,20 +133,21 @@ def create_cl_testsuite(dataset):
     """
     suite = TestSuite()
     test_count = 0
-    for test_name, test_config in config['checklist']['tests'].items():
-        if test_config['type'].get(str) == "MFT":
-            mft = create_MFT(dataset=dataset[:test_config['num_sentences'].get(int)],
+    for test_name, test_config in config['checklist']['tests'].get().items():
+        if test_config['type'] == "MFT":
+            mft = create_MFT(dataset=dataset[:test_config['num_sentences']],
                              name=test_name,
-                             capability=test_config['capability'].get(str),
-                             description=test_config['description'].get(str),
-                             perturb=_parse_perturb(test_config['perturb'])
+                             capability=test_config['capability'],
+                             description=test_config['description'],
+                             perturb=_parse_perturb(test_config['perturb']),
+                             templates=test_config['template'],
                              )
             suite.add(mft)
-        elif test_config['type'].get(str) == "INV":
-            inv = create_INV(dataset=dataset[:test_config['num_sentences'].get(int)],
+        elif test_config['type'] == "INV":
+            inv = create_INV(dataset=dataset[:test_config['num_sentences']],
                              name=test_name,
-                             capability=test_config['capability'].get(str),
-                             description=test_config['description'].get(str),
+                             capability=test_config['capability'],
+                             description=test_config['description'],
                              perturb=_parse_perturb(test_config['perturb'])
                              )
             suite.add(inv)
@@ -214,7 +215,7 @@ def _perturb_functions(change_to_make, phrases):
         return append_to_end
     elif change_to_make == "append_to_start":
         def append_to_start(x):
-            return ["%s %s"%(x, p) for p in phrases]
+            return ["%s %s"%(p, x) for p in phrases]
         return append_to_start
     elif change_to_make == "adding_typos":
         from checklist.perturb import Perturb

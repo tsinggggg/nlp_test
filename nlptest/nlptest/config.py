@@ -80,13 +80,13 @@ config = Config()
 
 
 def _parse_perturb(conf):
-    if conf.get() is None:
+    if conf is None:
         return None
     else:
         ret = dict()
-        ret['change'] = conf['change'].get(str)
+        ret['change'] = conf['change']
         try:
-            ret['phrases'] = conf['phrases'].get(list)
+            ret['phrases'] = conf['phrases']
         except:
             ret['phrases'] = []
         return ret

@@ -38,6 +38,22 @@ checklist:
         phrases:
       template:
 
+    adding negation:
+      type: "DIR"
+      capability: "Robustness"
+      description: "adding negation to end of sentences"
+      num_sentences: 10
+      label: 1
+      increasing: False
+      tolerance: 0
+      perturb:
+        change: "append_to_end"
+        phrases:
+          - "I hate this."
+          - "This is just terrible!"
+          - "Anyway, I thought it was bad."
+      template:
+
 textattack:
   run: True
   recipe: "TextFoolerJin2019"

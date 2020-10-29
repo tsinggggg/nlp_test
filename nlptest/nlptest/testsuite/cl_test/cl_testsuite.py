@@ -39,6 +39,22 @@ def _create_INV(data, name=None, capability=None, description=None):
     return test
 
 
+def _create_DIR(data, label, increasing, tolerance=0,  name=None, capability=None, description=None):
+    """
+
+    :param data: list of inputs(strings or ...)
+    :param name:
+    :param capability:
+    :param description:
+    :return:
+    """
+    from checklist.expect import Expect
+    monotonic = Expect.monotonic(label=label, increasing=increasing, tolerance=tolerance)
+    test = DIR(data=data, expect=monotonic,
+               name=name, capability=capability, description=description)
+    return test
+
+
 def create_MFT(dataset=None, templates=None, perturb=None, name=None, capability=None, description=None, **kwargs):
     """
 
@@ -125,6 +141,43 @@ def create_INV(dataset=None, templates=None, perturb=None, name=None, capability
     return test
 
 
+def create_DIR(dataset, label, increasing, tolerance=0, templates=None, perturb=None, name=None, capability=None, description=None, **kwargs):
+    """
+
+    :param dataset: list of lists of input, label
+    :param templates:
+    :param name:
+    :param capability:
+    :param description:
+    :return:
+    """
+    if perturb is not None:
+        from checklist.perturb import Perturb
+        func = _perturb_functions(perturb['change'], perturb['phrases'])
+
+        features, targets = [x[0] for x in dataset], [x[1] for x in dataset]
+        perturbed_data = Perturb.perturb(features,
+                                         func
+                                         )
+        test = _create_DIR(data=perturbed_data['data'], label=label, tolerance=tolerance, increasing=increasing,
+                           name=name, capability=capability, description=description
+                           )
+    # elif templates:
+    #     editor, ret = Editor(), None
+    #     for t in templates:
+    #         if ret is None:
+    #             ret = editor.template(**t)
+    #         else:
+    #             ret += editor.template(**t)
+    #     test = _create_MFT(**ret,
+    #                        name=name, capability=capability, description=description
+    #                        )
+    else:
+        raise ValueError('please provide at least one of dataset or templates for MFT')
+
+    return test
+
+
 def create_cl_testsuite(dataset):
     """
 
@@ -149,6 +202,17 @@ def create_cl_testsuite(dataset):
                              capability=test_config['capability'],
                              description=test_config['description'],
                              perturb=_parse_perturb(test_config['perturb'])
+                             )
+            suite.add(inv)
+        elif test_config['type'] == "DIR":
+            inv = create_DIR(dataset=dataset[:test_config['num_sentences']],
+                             name=test_name,
+                             capability=test_config['capability'],
+                             description=test_config['description'],
+                             perturb=_parse_perturb(test_config['perturb']),
+                             label=test_config['label'],
+                             increasing=test_config['increasing'],
+                             tolerance=test_config['tolerance'],
                              )
             suite.add(inv)
         else:

@@ -29,7 +29,6 @@ def get_report_overview(results):
                 }
                 for cap, tests in cl_summary.items()
             ],
-            name="CL Test Summary",
             header=['Capability', 'Minimum Functionality Test', 'INVariance Test', 'DIRectional Expectation Test']
         )
         desc = HTML(
@@ -48,7 +47,7 @@ def get_report_overview(results):
                  desc
                  ],
                 anchor_id="cl_overview",
-                name="CL",
+                name="Robustness Tests",
                 sequence_type="list",
             )
             )
@@ -65,13 +64,12 @@ def get_report_overview(results):
                 }
                 for k, v in ta_summary.items()
             ],
-            name="TA Test Summary"
         )
         ret.append(
             Container(
                 [test_info_ta],
                 anchor_id="ta_overview",
-                name="TA",
+                name="Adversarial Attacks",
                 sequence_type="grid",
             ))
 
@@ -216,7 +214,7 @@ def get_report_structure(results
             Container(
                 get_ta_detail(results["textattack"]),
                 sequence_type="list",
-                name="TA result",
+                name="Adversarial Attacks",
                 anchor_id="ta_result",
             )
         )
@@ -225,7 +223,7 @@ def get_report_structure(results
             Container(
                 get_cl_detail(results["checklist"]),
                 sequence_type="list",
-                name="CL result",
+                name="Robustness Tests",
                 anchor_id="cl_result",
             )
         )

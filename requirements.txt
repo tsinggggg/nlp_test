@@ -2,10 +2,10 @@
 confuse>=1.0.0
 
 # nlp stuff
-checklist>=0.0.9
+checklist>=0.0.10
 transformers
 torch
-textattack>=0.2.8
+textattack>=0.2.11
 
 # common
 numpy

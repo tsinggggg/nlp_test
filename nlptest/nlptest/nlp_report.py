@@ -50,6 +50,12 @@ class NLPReport:
                                                                    self.tokenizer,
                                                                    config['textattack']['recipe'].get(str)
                                                                    )
+                if config['textattack']['customized_embedding'].get():
+                    from .testsuite.ta.util import replace_word_embedding_for_recipe, gensim_wordvectors_for_ta
+                    word_embedding = gensim_wordvectors_for_ta(config['textattack']['customized_embedding'].get(str))
+                    self._test_suites['textattack'] = replace_word_embedding_for_recipe(self._test_suites['textattack'],
+                                                                                        word_embedding
+                                                                                        )
         return self._test_suites
 
     @property

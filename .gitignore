@@ -1,0 +1,6 @@
+tests/data/
+tests/data/*
+.ipynb_checkpoints/
+wandb
+.idea/
+tests/wandb/

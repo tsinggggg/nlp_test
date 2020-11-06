@@ -41,3 +41,5 @@ textattack:
   run: True
   recipe: "TextFoolerJin2019"
   embedding: "paragramcf"
+  customized_embedding:
+

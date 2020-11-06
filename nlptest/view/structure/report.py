@@ -29,7 +29,8 @@ def get_report_overview(results):
                 }
                 for cap, tests in cl_summary.items()
             ],
-            header=['Capability', 'Minimum Functionality Test', 'INVariance Test', 'DIRectional Expectation Test']
+            header=['Capability', 'Minimum Functionality Test', 'INVariance Test', 'DIRectional Expectation Test'],
+            name="Tests Failure Rate"
         )
         desc = HTML(
             f'<div id="cl_explain" style="padding:20px" class="collapse"><div class="card card-body"><p>{test_description}</p></div></div>',
@@ -107,10 +108,10 @@ def get_ta_detail(logger: AttackLogManager):
         elif isinstance(r, FailedAttackResult):
             perturbed_output_str = _get_failed_result_str(r)
         ret.append(dict(original_label=output_str,
-                                perturbed_label=perturbed_output_str,
-                                original_text=original_text,
-                                perturbed_text=perturbed_text
-                                ))
+                        perturbed_label=perturbed_output_str,
+                        original_text=original_text,
+                        perturbed_text=perturbed_text
+                        ))
     return [TA(examples=ret)]
 
 

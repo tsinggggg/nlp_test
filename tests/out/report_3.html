@@ -104,8 +104,8 @@
         <tr>
             <th>Robustness</th>
                 <td>0.0%(0)</td>
-                <td>100.0%(1)</td>
-                <td>0.0%(1)</td>
+                <td>25.0%(8)</td>
+                <td>25.0%(8)</td>
         </tr>
     </tbody>
 </table>
@@ -134,7 +134,7 @@
     <tbody>
         <tr>
             <th>Number of successful attacks</th>
-                <td>1</td>
+                <td>8</td>
         </tr>
         <tr>
             <th>Number of failed attacks</th>
@@ -158,19 +158,19 @@
         </tr>
         <tr>
             <th>Average perturbed word %</th>
-                <td>20</td>
+                <td>22.6</td>
         </tr>
         <tr>
             <th>Average num. words per input</th>
-                <td>5</td>
+                <td>4.88</td>
         </tr>
         <tr>
             <th>Avg num queries:</th>
-                <td>33</td>
+                <td>37.8</td>
         </tr>
         <tr>
             <th>(Additional) grammar error rate</th>
-                <td>0</td>
+                <td>12.5</td>
         </tr>
     </tbody>
 </table>
@@ -220,6 +220,83 @@
         </td>
         <td>
             this is a good movie --> this is a lousy movie
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            this is a bad movie --> this is a good movie
+        </td>
+      </tr>
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            this is a slightly positive review --> this is a slightly negative review
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            i am mad --> i am absolutely_bonkers
+        </td>
+      </tr>
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            i am glad --> i am disappointed
+        </td>
+      </tr>
+      <tr>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            0 (97%)
+        </td>
+        <td>
+            i had a great meal --> i had a terrible meal
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            i am so sad --> i am so happy
+        </td>
+      </tr>
+      <tr>
+        <td>
+            0 (100%)
+        </td>
+        <td>
+            1 (100%)
+        </td>
+        <td>
+            i have no idea if i am happy --> i have no idea if i am delighted
         </td>
       </tr>
 
@@ -668,8 +745,8 @@
             <tr data-toggle="collapse" data-target="#cl_result_table-2" class="accordion-toggle">
                 <th>Robustness</th>
     <td>0.0%(0)</td>
-    <td>100.0%(1)</td>
-    <td>0.0%(1)</td>
+    <td>25.0%(8)</td>
+    <td>25.0%(8)</td>
 
             </tr>
 
@@ -689,7 +766,7 @@
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-INV-1" class="accordion-toggle">
                 <th>adding typos</th>
-    <td>100.0%(1)</td>
+    <td>25.0%(8)</td>
 
             </tr>
 
@@ -729,7 +806,7 @@
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                1 / 1 = 100.0%
+                2 / 8 = 25.0%
             </td>
 
         </tr>
@@ -774,6 +851,125 @@
           </td>
 
       </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              0(99.2%)
+          </td>
+          <td>
+            this is a bad movie
+            -->
+            this is ab ad movie
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            this is a slightly positive review
+            -->
+            this is as lightly positive review
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              1(92.7%)
+          </td>
+          <td>
+            i am mad
+            -->
+            i am amd
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(94.4%)
+          </td>
+          <td>
+            i am glad
+            -->
+            i am gald
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            i had a great meal
+            -->
+            ih ad a great meal
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am so sad
+            -->
+             iam so sad
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+            i have no idea if i am happy
+            -->
+            i have no idea ifi  am happy
+          </td>
+
+      </tr>
 
     </tbody>
     </table>
@@ -802,7 +998,7 @@
     <tbody>
             <tr data-toggle="collapse" data-target="#Robustness-DIR-1" class="accordion-toggle">
                 <th>adding negation</th>
-    <td>0.0%(1)</td>
+    <td>25.0%(8)</td>
 
             </tr>
 
@@ -842,7 +1038,7 @@
                 <span style="color: #7A9DEA">Failure Rate</span>
                 </b>
                 <br>
-                0 / 1 = 0.0%
+                2 / 8 = 25.0%
             </td>
 
         </tr>
@@ -901,6 +1097,244 @@
             this is a good movie
             -->
             this is a good movie This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            this is a bad movie
+            -->
+            this is a bad movie This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            this is a bad movie
+            -->
+            this is a bad movie I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            this is a slightly positive review
+            -->
+            this is a slightly positive review I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              1(99.9%)
+          </td>
+          <td>
+            this is a slightly positive review
+            -->
+            this is a slightly positive review This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             N
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am mad
+            -->
+            i am mad I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am mad
+            -->
+            i am mad This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+            i am glad
+            -->
+            i am glad I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+            i am glad
+            -->
+            i am glad This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              0(81.2%)
+          </td>
+          <td>
+            i had a great meal
+            -->
+            i had a great meal I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              1(> 99.9%)
+          </td>
+          <td>
+              0(99.6%)
+          </td>
+          <td>
+            i had a great meal
+            -->
+            i had a great meal This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am so sad
+            -->
+            i am so sad I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i am so sad
+            -->
+            i am so sad This is just terrible!
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+              0(99.9%)
+          </td>
+          <td>
+            i have no idea if i am happy
+            -->
+            i have no idea if i am happy I hate this.
+          </td>
+
+      </tr>
+      <tr>
+          <td>
+             Y
+          </td>
+          <td>
+              0(99.8%)
+          </td>
+          <td>
+              0(> 99.9%)
+          </td>
+          <td>
+            i have no idea if i am happy
+            -->
+            i have no idea if i am happy This is just terrible!
           </td>
 
       </tr>

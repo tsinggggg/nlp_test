@@ -1,4 +1,4 @@
-from transformers import DistilBertForSequenceClassification, DistilBertTokenizer, TextClassificationPipeline
+from transformers import *
 import torch
 from sklearn.base import is_classifier
 from sklearn.feature_extraction.text import _VectorizerMixin
@@ -6,8 +6,10 @@ from sklearn.pipeline import Pipeline
 
 
 def model_wrapper(model, tokenizer):
-    if isinstance(model, DistilBertForSequenceClassification) and \
-            isinstance(tokenizer, DistilBertTokenizer):
+    if (isinstance(model, DistilBertForSequenceClassification) and \
+            isinstance(tokenizer, DistilBertTokenizer)) or\
+        (isinstance(model, BertForSequenceClassification) and \
+         isinstance(tokenizer, BertTokenizer)):
         # TODO: add device used to log
         device = 0 if torch.cuda.is_available() else -1
         pipeline = TextClassificationPipeline(model=model, tokenizer=tokenizer, device=device,
@@ -24,8 +26,10 @@ def model_wrapper(model, tokenizer):
 
 
 def model_wrapper_for_ta(model, tokenizer):
-    if isinstance(model, DistilBertForSequenceClassification) and \
-            isinstance(tokenizer, DistilBertTokenizer):
+    if (isinstance(model, DistilBertForSequenceClassification) and \
+            isinstance(tokenizer, DistilBertTokenizer)) or\
+        (isinstance(model, BertForSequenceClassification) and \
+         isinstance(tokenizer, BertTokenizer)):
         from textattack.models.wrappers.huggingface_model_wrapper import HuggingFaceModelWrapper
         pipeline = HuggingFaceModelWrapper(model=model, tokenizer=tokenizer)
         return pipeline

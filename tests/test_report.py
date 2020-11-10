@@ -22,6 +22,14 @@ def test_case_distillbert_binary():
     return dataset, model, tokenizer
 
 
+def test_case_bert_binary():
+    dataset = test_data()
+    from transformers import BertTokenizer, BertForSequenceClassification
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
+    return dataset, model, tokenizer
+
+
 def test_case_sklearn_binary():
     import pandas as pd
     dataset = test_data()
@@ -86,4 +94,18 @@ class TestsTest(TestCase):
                            textattack={'customized_embedding': './data/GoogleNews-vectors-negative300.bin'})
         result = report.test_result
         with open('./out/report_3.html', 'w') as fh:
+            fh.write(report.html)
+
+    def test_report4(self):
+        """
+        bert
+        :return:
+        """
+        from nlptest.nlptest.nlp_report import NLPReport
+        dataset, model, tokenizer = test_case_bert_binary()
+        report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer,
+                           config_file="./config_test.yaml",
+                           )
+        result = report.test_result
+        with open('./out/report_4.html', 'w') as fh:
             fh.write(report.html)

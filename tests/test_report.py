@@ -1,4 +1,5 @@
 from unittest import TestCase
+import json
 
 
 def test_data():
@@ -51,6 +52,14 @@ class TestsTest(TestCase):
         report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer,
                            config_file="./config_test.yaml")
         result = report.test_result
+        report_json = json.loads(report.json)
+        assert "Overview" in report_json.keys()
+        assert "Adversarial Attacks" in report_json.keys()
+        assert "Robustness Tests" in report_json.keys()
+        assert "Robustness Tests" in report_json['Overview'].keys()
+        assert "Adversarial Attacks" in report_json['Overview'].keys()
+        assert "Tests Failure Rate" in report_json['Overview']['Robustness Tests'].keys()
+        assert "Textattack Summary" in report_json['Overview']['Adversarial Attacks'].keys()
         with open('./out/report_1.html', 'w') as fh:
             fh.write(report.html)
 

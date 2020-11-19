@@ -5,7 +5,7 @@ confuse>=1.0.0
 checklist>=0.0.10
 transformers
 torch
-textattack>=0.2.11
+textattack>=0.2.14
 
 # common
 numpy

@@ -2,6 +2,7 @@ from typing import Union
 from pathlib import Path
 import prompt_toolkit # this is a hack to solve the name conflict caused by wandb.vendor.prompt_toolkit
 import os
+import json
 from .config import config
 from ..utils.model_wrapper import model_wrapper
 
@@ -87,11 +88,11 @@ class NLPReport:
             self._html = self._render_html()
         return self._html
 
-    # @property
-    # def json(self):
-    #     if self._json is None:
-    #         self._json = self._render_json()
-    #     return self._json
+    @property
+    def json(self):
+        if self._json is None:
+            self._json = self._render_json()
+        return self._json
     #
     # @property
     # def widgets(self):
@@ -121,9 +122,9 @@ class NLPReport:
     #     #     pbar.update()
     #     # return widgets
     #
-    # def _render_json(self):
-    #     pass
-    #     # with tqdm(total=1, desc="Render JSON", disable=disable_progress_bar) as pbar:
-    #     #     data = json.dumps(description, indent=4, cls=CustomEncoder)
-    #     #     pbar.update()
-    #     # return data
+    def _render_json(self):
+        from ..view.flavours.json import CustomEncoder
+
+        report = self.report
+        data = json.dumps(report, indent=4, cls=CustomEncoder)
+        return data

@@ -65,6 +65,7 @@ def get_report_overview(results):
                 }
                 for k, v in ta_summary.items()
             ],
+            name="Textattack Summary"
         )
         ret.append(
             Container(

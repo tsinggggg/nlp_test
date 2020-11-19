@@ -23,5 +23,4 @@ class ToggleRow(ItemRenderer):
     def convert_to_class(cls, obj, flv) -> None:
         obj.__class__ = cls
         if "toggle_content" in obj.content:
-            for item in obj.content["toggle_content"]:
-                flv(item)
+            flv(obj.content["toggle_content"])

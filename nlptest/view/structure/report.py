@@ -113,7 +113,10 @@ def get_ta_detail(logger: AttackLogManager):
                         original_text=original_text,
                         perturbed_text=perturbed_text
                         ))
-    return [TA(examples=ret)]
+    return TA(examples=ret,
+              name="Adversarial Attacks",
+              anchor_id="ta_result",
+              )
 
 
 def get_cl_detail(testsuite):
@@ -147,7 +150,7 @@ def get_cl_detail(testsuite):
                                   "fmt": "fmt_pct_numeric_pair",
                               }
                           ],
-                          toggle_content=[CLTest(test_name=test,
+                          toggle_content=CLTest(test_name=test,
                                                  test_type=t,
                                                  capability=cap,
                                                  description=testsuite.info[test]['description'],
@@ -156,7 +159,7 @@ def get_cl_detail(testsuite):
                                                          'rate': stats['fails'] / stats['testcases'],
                                                          },
                                                  examples=testsuite.tests[test].form_testcases()
-                                                 )],
+                                                 ),
                           )
                 )
             # _toggle_content.append(Table(
@@ -186,16 +189,17 @@ def get_cl_detail(testsuite):
                                      "fmt": "fmt_pct_numeric_pair",
                                  }
                              ],
-                             toggle_content=[toggle_content],
+                             toggle_content=toggle_content,
                              )
 
         _rows.append(this_row)
     ret = ToggleTable(header=['capability'] + test_types,
                       rows=_rows,
-                      anchor_id="cl_result_table"
+                      name="Robustness Tests",
+                      anchor_id="cl_result",
                      )
     # ret = [SentencePair(string=x.__str__('file')) for x in results]
-    return [ret]
+    return ret
 
 
 def get_report_structure(results
@@ -213,21 +217,11 @@ def get_report_structure(results
     # each sentence/result of text attack
     if "textattack" in results:
         section_items.append(
-            Container(
-                get_ta_detail(results["textattack"]),
-                sequence_type="list",
-                name="Adversarial Attacks",
-                anchor_id="ta_result",
-            )
+            get_ta_detail(results["textattack"])
         )
     if "checklist" in results:
         section_items.append(
-            Container(
-                get_cl_detail(results["checklist"]),
-                sequence_type="list",
-                name="Robustness Tests",
-                anchor_id="cl_result",
-            )
+            get_cl_detail(results["checklist"])
         )
     sections = Container(section_items, name="Root", sequence_type="sections")
     footer = HTML(

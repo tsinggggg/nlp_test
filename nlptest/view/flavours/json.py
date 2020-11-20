@@ -36,10 +36,7 @@ class CustomEncoder(json.JSONEncoder):
                         ]
 
             else:
-                return [
-                        {r["name"]: r["value"][0]}
-                        for r in o.content["rows"]
-                       ]
+                return {r["name"]: r["value"][0] for r in o.content["rows"]}
 
         if isinstance(o, TA):
             return [
@@ -61,4 +58,6 @@ class CustomEncoder(json.JSONEncoder):
         if isinstance(o, ToggleRow):
             return self.default(o.content["toggle_content"])
 
+        if isinstance(o, CLTest):
+            return o.content
         return str(o)

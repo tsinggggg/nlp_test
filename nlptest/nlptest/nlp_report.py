@@ -35,6 +35,7 @@ class NLPReport:
         self._html = None
         self._widgets = None
         self._json = None
+        self._dict = None
         self._test_suites = None
         self._test_results = None
 
@@ -93,6 +94,12 @@ class NLPReport:
         if self._json is None:
             self._json = self._render_json()
         return self._json
+
+    @property
+    def dict(self):
+        if self._dict is None:
+            self._dict = json.loads(self.json)
+        return self._dict
     #
     # @property
     # def widgets(self):

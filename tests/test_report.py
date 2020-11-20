@@ -52,7 +52,7 @@ class TestsTest(TestCase):
         report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer,
                            config_file="./config_test.yaml")
         result = report.test_result
-        report_json = json.loads(report.json)
+        report_json = report.dict
         assert "Overview" in report_json.keys()
         assert "Adversarial Attacks" in report_json.keys()
         assert "Robustness Tests" in report_json.keys()

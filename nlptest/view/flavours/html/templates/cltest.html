@@ -68,8 +68,8 @@
         </tr>
     </thead>
     <tbody class="searchable">
-        {% for example in examples %}
-        {% for e in example['examples'] %}
+        {% for testcase in testcases %}
+        {% for e in testcase['examples'] %}
       <tr>
           <td>
              {% if e["succeed"] == 1%}

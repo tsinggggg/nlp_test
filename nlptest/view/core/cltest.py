@@ -10,18 +10,17 @@ class CLTest(ItemRenderer):
                  capability,
                  description,
                  result,
-                 examples,
+                 testcases,
                  name=None,
-                 caption=None,
                  **kwargs):
         super().__init__(
             "cltest", {"test_name": test_name,
-                       "caption": caption,
                        "test_type": test_type,
                        "capability": capability,
                        "description": description,
                        "result": result,
-                       "examples": examples,
+                       "testcases": testcases,
+                       "name": name,
                        },
             **kwargs
         )

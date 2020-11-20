@@ -158,7 +158,7 @@ def get_cl_detail(testsuite):
                                                          'testcases': stats['testcases'],
                                                          'rate': stats['fails'] / stats['testcases'],
                                                          },
-                                                 examples=testsuite.tests[test].form_testcases()
+                                                 testcases=testsuite.tests[test].form_testcases()
                                                  ),
                           )
                 )

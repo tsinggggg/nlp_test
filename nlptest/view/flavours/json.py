@@ -53,9 +53,12 @@ class CustomEncoder(json.JSONEncoder):
             ]
 
         if isinstance(o, ToggleTable):
-            return [
-                self.default(row)
+            return {
+                row.content["row_index"]: self.default(row)
                 for row in o.content['rows']
-            ]
+            }
+
+        if isinstance(o, ToggleRow):
+            return self.default(o.content["toggle_content"])
 
         return str(o)

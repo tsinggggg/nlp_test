@@ -2,11 +2,16 @@
 confuse>=1.0.0
 
 # nlp stuff
+language-tool-python==2.4.1
 checklist>=0.0.10
-transformers
+transformers==3.3.0
 torch
+tensorflow
 textattack>=0.2.14
+tensorflow-hub==0.9.0
+# tfhub dependency
+absl-py==0.10.0
 
 # common
-numpy
+numpy==1.18.5
 jinja2

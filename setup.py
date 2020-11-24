@@ -12,7 +12,7 @@ setup(
     packages=find_packages(exclude=['tests*',
                                     'wandb*'
                                     ]),
-    install_requirements=requirements,
+    install_requires=requirements,
     description="NLP tests",
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -1,7 +1,12 @@
-FROM openjdk:8
+FROM ubuntu:20.04
 
-RUN apt update && \
-    apt install -y bash \
+# Setup python and java and base system
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -q -y openjdk-8-jdk \
+                   bash \
                    build-essential \
                    git \
                    curl \

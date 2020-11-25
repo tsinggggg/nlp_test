@@ -1,1 +1,2 @@
 include nlptest/nlptest/*.yaml
+recursive-include nlptest/view/flavours/html/templates *.html *.js *.css

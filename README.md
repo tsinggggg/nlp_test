@@ -22,6 +22,31 @@ Most dependencies are listed in the requirement file.
 3. data: an iterable of sentence label pairs
 4. config file (YAML) : a config file in YAML format that describes the tests to run the attack method to use
 
+### Output
+A report summarizing test results and adversarial examples.
+
+### Example
+Refer to the test case `test_report` in tests/test_report.py for an example of how to use this package.
+
+To start, define a NLPReport by 
+```
+from nlptest.nlptest.nlp_report import NLPReport
+```
+and provide inputs as arguments
+```
+report = NLPReport(dataset=dataset, model=model, tokenizer=tokenizer,
+                   config_file=current_path / "config_test.yaml")
+```
+Results can be inspected in the `test_result` attribute
+```
+report.test_result
+```
+Currently implemented output formats include:
+* HTML: `report.html`
+* JSON: `report.json`
+* dictionary: `report.dict`
+
+
 
 ## Docker Image
 1. git clone

@@ -46,7 +46,7 @@ Currently implemented output formats include:
 * JSON: `report.json`
 * dictionary: `report.dict`
 
-
+Refer to `tests/config_test.yaml` and `nlpteste/nlptest/` for examples of test configuration.
 
 ## Docker Image
 1. git clone
